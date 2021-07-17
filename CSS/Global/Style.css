@@ -154,7 +154,7 @@ body a:hover {
 }
 
 body a:visited {
-	color: #ff9999;
+	color: #dd6060;
 	text-decoration: none;
 }
 
@@ -267,7 +267,7 @@ hr {
 }
 
 .left-menu a:visited {
-	color: #ff9999;
+	color: #dd6060;
 	text-decoration: none;
 }
 
@@ -312,7 +312,7 @@ ul li {
 /* Стиль для маркированного списка верхней менюшки */
 ul.top {
 	margin: 0; /* Обнуляем значение отступов */
-	padding-left: 400px; /* Значение полей */
+	padding-left: 300px; /* Значение полей */
 }
 ul.top li {
 	display: inline; /* Отображать как строчный элемент */
@@ -334,15 +334,15 @@ font-family: "Verdana";
 .footer {
 	margin-top: -5px;
 	margin-bottom: 0px;
-	float: left; 
-	width: 100.5%; 
+	float: right; 
+	width: 85%;
 	/*border: 1px solid #000;*/
 	margin-left: -0.5%;
 }
 
 .footer-content {
 	border: 1px solid #000;
-	float: left; 
+	float: right; 
 	width: 99%;
 	padding: 5px;
 	background: #ccaaaa;
