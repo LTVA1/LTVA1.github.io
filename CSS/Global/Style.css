@@ -174,9 +174,10 @@ body {
 
 .top-menu-container, .top-menu {
 	float: left; 
-	width: 100%; 
+	width: 101.1%; 
 	/*border: 1px solid #000;*/
-	margin: 0px;
+	margin-left: -10px;
+	margin-right: -10px;
 	padding: 0px;
 }
 
