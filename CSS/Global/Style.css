@@ -1,0 +1,217 @@
+/* Шрифты */
+
+@font-face {
+font-family: "FuturaBookC"; 
+url("./Fonts/Futura/FuturaBookC.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "FuturaBookC-Italic"; 
+url("./Fonts/Futura/FuturaBookC-Italic.ttf") format("truetype"); 
+font-style: italic; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "FuturaDemiC"; 
+url("./Fonts/Futura/FuturaDemiC.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "FuturaDemiC-Italic"; 
+url("./Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-style: italic; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "FuturaLightC"; 
+url("./Fonts/Futura/FuturaLightC.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "FuturaLightC-Italic"; 
+url("./Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-style: italic; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "FuturaMediumC"; 
+url("./Fonts/Futura/FuturaMediumC.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "FuturaMediumC-Italic"; 
+url("./Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-style: italic; 
+font-weight: normal; 
+}
+
+/* ----------------------------------------------------------- */
+
+@font-face {
+font-family: "TrebuchetMS"; 
+url("./Fonts/TrebuchetMS/TrebuchetMS.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "TrebuchetMS-Bold"; 
+url("./Fonts/TrebuchetMS/TrebuchetMS-Bold.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "TrebuchetMS-Italic"; 
+url("./Fonts/TrebuchetMS/TrebuchetMS-Italic.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "TrebuchetMS-BoldItalic"; 
+url("./Fonts/TrebuchetMS/TrebuchetMS-BoldItalic.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+/* ----------------------------------------------------------- */
+
+@font-face {
+font-family: "Verdana"; 
+url("./Fonts/Verdana/Verdana.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal;
+}
+
+@font-face {
+font-family: "Verdana-Bold"; 
+url("./Fonts/Verdana/Verdana-Bold.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal;
+}
+
+@font-face {
+font-family: "Verdana-Italic"; 
+url("./Fonts/Verdana/Verdana-Italic.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+@font-face {
+font-family: "Verdana-BoldItalic"; 
+url("./Fonts/Verdana/Verdana-BoldItalic.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+}
+
+/* Стили заголовков */
+
+h1 { /* Заголовок страницы */
+	font-size: 300%;
+	font-family: "Verdana";
+	color: #FFAF47;
+}
+
+h2 {
+	font-size: 200%;
+	font-family: "Trebuchet MS";
+	font-weight: normal;
+	margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+/* Остальное */
+
+/*  */
+body {
+	font-size: 10pt;
+}
+
+.container {
+	width:100%;
+}
+
+.content {
+	float: right; 
+	width: 89%; 
+	/*border: 1px solid #000;*/
+	margin-right: 10px;
+	padding: 0%;
+	font-family: "Verdana";
+}
+
+.content > h1, h2, h3, h4, h5, h6 {
+	color: #000000;
+	font-family: "Verdana";
+}
+
+.left-menu-container {
+	float: left; 
+	width: 9.5%; 
+	/*border: 1px solid #000;*/
+	padding-right: -10px;
+}
+.left-menu {
+	float: left; 
+	width: 99%; 
+	border: 1px solid #000;
+	padding: 4%;
+	margin: -5px;
+	font-family: "Verdana";
+}
+
+.top-menu-container, .top-menu {
+	float: left; 
+	width: 100%; 
+	/*border: 1px solid #000;*/
+	margin: 0px;
+	padding: 0px;
+}
+
+.top-menu {
+	margin-top: -16px;
+	padding: 5px;
+	font-family: "FuturaBookC";
+	background: #444444;
+	color: #ffffff;
+	font-size: 200%
+}
+
+/* Подвинуты пункты маркированного списка */
+ul li {
+	margin-left: -1rem;
+}
+
+/* Стиль для маркированного списка верхней менюшки */
+ul.top {
+	margin: 0; /* Обнуляем значение отступов */
+	padding-left: 400px; /* Значение полей */
+}
+ul.top li {
+	display: inline; /* Отображать как строчный элемент */
+	margin-right: 5px; /* Отступ слева */
+	padding: 3px; /* Поля вокруг текста */
+	margin-left: 4rem;
+}
+
+/* Человеческое отображение iframe'а */
+
+iframe[seamless]{
+    background-color: transparent;
+    border: 0px none transparent;
+    padding: 0px;
+    overflow: hidden;
+	font-family: "Verdana";
+}
