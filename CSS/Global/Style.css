@@ -9,7 +9,7 @@ font-display: swap;
 unicode-range: U+0000-FFFF; 
 }
 
-@font-face {
+/*@font-face {
 font-family: "FuturaBookC-Italic"; 
 src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC-Italic.ttf") format("truetype"); 
 font-style: italic; 
@@ -70,7 +70,7 @@ font-style: italic;
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-FFFF; 
-}
+}*/
 
 /* ----------------------------------------------------------- */
 
@@ -83,7 +83,7 @@ font-display: swap;
 unicode-range: U+0000-FFFF; 
 }
 
-@font-face {
+/*@font-face {
 font-family: "TrebuchetMS-Bold"; 
 src: url("https://ltva1.github.io/Fonts/TrebuchetMS/TrebuchetMS-Bold.ttf") format("truetype"); 
 font-style: normal; 
@@ -108,7 +108,7 @@ font-style: normal;
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-FFFF; 
-}
+}*/
 
 /* ----------------------------------------------------------- */
 
@@ -121,7 +121,7 @@ font-display: swap;
 unicode-range: U+0000-FFFF;
 }
 
-@font-face {
+/*@font-face {
 font-family: "Verdana-Bold"; 
 src: url("https://ltva1.github.io/Fonts/Verdana/Verdana-Bold.ttf") format("truetype"); 
 font-style: normal; 
@@ -146,7 +146,9 @@ font-style: normal;
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-FFFF; 
-}
+}*/
+
+/* ----------------------------------------------------------- */
 
 @font-face {
 font-family: "Brush Font №1"; 
@@ -168,8 +170,6 @@ h2 {
 	font-size: 200%;
 	font-family: "Trebuchet MS";
 	font-weight: normal;
-font-display: swap;
-unicode-range: U+0000-FFFF;
 	margin-block-start: 0.5em;
 	margin-block-end: 0.5em;
 }
@@ -180,8 +180,6 @@ body {
 	font-size: 10pt;
 	font-family: "Verdana";
 	font-weight: normal;
-font-display: swap;
-unicode-range: U+0000-FFFF;
 	background-color: #e8e8e8;
 }
 
