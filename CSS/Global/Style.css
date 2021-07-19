@@ -9,7 +9,7 @@ font-display: swap;
 unicode-range: U+0000-FFFF; 
 }
 
-/*@font-face {
+@font-face {
 font-family: "FuturaBookC-Italic"; 
 src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC-Italic.ttf") format("truetype"); 
 font-style: italic; 
@@ -70,7 +70,7 @@ font-style: italic;
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-FFFF; 
-}*/
+}
 
 /* ----------------------------------------------------------- */
 
@@ -83,7 +83,7 @@ font-display: swap;
 unicode-range: U+0000-FFFF; 
 }
 
-/*@font-face {
+@font-face {
 font-family: "TrebuchetMS-Bold"; 
 src: url("https://ltva1.github.io/Fonts/TrebuchetMS/TrebuchetMS-Bold.ttf") format("truetype"); 
 font-style: normal; 
@@ -108,7 +108,7 @@ font-style: normal;
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-FFFF; 
-}*/
+}
 
 /* ----------------------------------------------------------- */
 
@@ -121,7 +121,7 @@ font-display: swap;
 unicode-range: U+0000-FFFF;
 }
 
-/*@font-face {
+@font-face {
 font-family: "Verdana-Bold"; 
 src: url("https://ltva1.github.io/Fonts/Verdana/Verdana-Bold.ttf") format("truetype"); 
 font-style: normal; 
@@ -146,7 +146,7 @@ font-style: normal;
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-FFFF; 
-}*/
+}
 
 @font-face {
 font-family: "Brush Font №1"; 
@@ -185,18 +185,18 @@ unicode-range: U+0000-FFFF;
 	background-color: #e8e8e8;
 }
 
-body a {
+.content a {
 	color: #bb2020;
 	text-decoration: none;
 }
 
 
-body a:hover {
+.content a:hover {
 	color: #dd4040;
 	text-decoration: underline;
 }
 
-body a:visited {
+.content a:visited {
 	color: #dd6060;
 	text-decoration: none;
 }
@@ -234,7 +234,7 @@ hr {
 	margin-left: -0.5%;
 	margin-top: -0.5%;
 	position: relative;
-	text-shadow: -2px -2px 0 #dd8888, 2px -2px 0 #dd8888, -2px 2px 0 #dd8888, 2px 2px 0 #dd8888;
+	text-shadow: -2px -2px 0 #dddd88, 2px -2px 0 #dd8888, -2px 2px 0 #dd8888, 2px 2px 0 #dd8888;
 	font-size: 180%;
 	margin-top: -20px;
 }
@@ -246,12 +246,12 @@ hr {
 	line-height: 0px;
 	max-height: 0px;
 	background: transparent;
-	color: #906060;
+	color: #aa6060;
 	text-decoration: none;
 }
 
 .header a:hover {
-	color: #90e0e0;
+	color: #bb6060;
 	text-decoration: none;
 }
 
