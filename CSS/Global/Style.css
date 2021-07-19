@@ -233,8 +233,8 @@ hr {
 	margin-top: -0.5%;
 	position: relative;
 	text-shadow: -2px -2px 0 #dddd88, 2px -2px 0 #dd8888, -2px 2px 0 #dd8888, 2px 2px 0 #dd8888;
-	font-size: 180%;
-	margin-top: -20px;
+	/*font-size: 180%;
+	margin-top: -20px;*/
 }
 
 .header a {
