@@ -6,7 +6,7 @@ src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC.ttf") format("truetyp
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 /*@font-face {
@@ -15,17 +15,17 @@ src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC-Italic.ttf") format("
 font-style: italic; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
-@font-face {
+*/@font-face {
 font-family: "FuturaDemiC"; 
 src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC.ttf") format("truetype"); 
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
-}
+unicode-range: U+0000-A000; 
+}/*
 
 @font-face {
 font-family: "FuturaDemiC-Italic"; 
@@ -33,7 +33,7 @@ src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("
 font-style: italic; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 @font-face {
@@ -42,7 +42,7 @@ src: url("https://ltva1.github.io/Fonts/Futura/FuturaLightC.ttf") format("truety
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 @font-face {
@@ -51,7 +51,7 @@ src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("
 font-style: italic; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 @font-face {
@@ -60,7 +60,7 @@ src: url("https://ltva1.github.io/Fonts/Futura/FuturaMediumC.ttf") format("truet
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 @font-face {
@@ -69,7 +69,7 @@ src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("
 font-style: italic; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }*/
 
 /* ----------------------------------------------------------- */
@@ -80,7 +80,7 @@ src: url("https://ltva1.github.io/Fonts/TrebuchetMS/TrebuchetMS.ttf") format("tr
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 /*@font-face {
@@ -89,7 +89,7 @@ src: url("https://ltva1.github.io/Fonts/TrebuchetMS/TrebuchetMS-Bold.ttf") forma
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 @font-face {
@@ -98,7 +98,7 @@ src: url("https://ltva1.github.io/Fonts/TrebuchetMS/TrebuchetMS-Italic.ttf") for
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 @font-face {
@@ -107,7 +107,7 @@ src: url("https://ltva1.github.io/Fonts/TrebuchetMS/TrebuchetMS-BoldItalic.ttf")
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }*/
 
 /* ----------------------------------------------------------- */
@@ -118,7 +118,7 @@ src: url("https://ltva1.github.io/Fonts/Verdana/Verdana.ttf") format("truetype")
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF;
+unicode-range: U+0000-A000;
 }
 
 /*@font-face {
@@ -127,7 +127,7 @@ src: url("https://ltva1.github.io/Fonts/Verdana/Verdana-Bold.ttf") format("truet
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF;
+unicode-range: U+0000-A000;
 }
 
 @font-face {
@@ -136,7 +136,7 @@ src: url("https://ltva1.github.io/Fonts/Verdana/Verdana-Italic.ttf") format("tru
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }
 
 @font-face {
@@ -145,7 +145,7 @@ src: url("https://ltva1.github.io/Fonts/Verdana/Verdana-BoldItalic.ttf") format(
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF; 
+unicode-range: U+0000-A000; 
 }*/
 
 /* ----------------------------------------------------------- */
@@ -156,7 +156,7 @@ src: url('https://ltva1.github.io/Fonts/BrushFontOne/Brush%20Font%20%E2%84%961.t
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF;
+unicode-range: U+0000-A000;
 }
 
 /* Стили заголовков */
@@ -233,8 +233,6 @@ hr {
 	margin-top: -0.5%;
 	position: relative;
 	text-shadow: -2px -2px 0 #dddd88, 2px -2px 0 #dd8888, -2px 2px 0 #dd8888, 2px 2px 0 #dd8888;
-	/*font-size: 180%;
-	margin-top: -20px;*/
 }
 
 .header a {
@@ -278,7 +276,7 @@ hr {
 	margin-block-end: 0.5em;
 	font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-FFFF;
+unicode-range: U+0000-A000;
 }
 
 .left-menu-container {
@@ -426,6 +424,36 @@ unicode-range: U+0000-FFFF;
 	font-size: 1.8em;
 	font-variant: normal;
 	font-feature-settings: "kern", "liga", "calt";
+}
+
+/* Таблица */
+
+table {
+	border: 5px solid #333333;
+	border-collapse: collapse;
+	margin: 1px;
+	width: 100%;
+}
+
+/* Ячейка-заголовок */
+
+th {
+	border: 3px solid #666666;
+	padding: 0.3em;
+	font-weight: bold;
+	font-family: "FuturaDemiC";
+	font-size: 150%;
+	text-align: center;
+	background: #cccccc;
+}
+
+/* Обычная ячейка */
+
+td {
+	padding: 0.3em;
+	border: 2px solid #999999;
+	text-align: center;
+	background: #e0d8d8;
 }
 
 /* Подвинуты пункты маркированного списка */
