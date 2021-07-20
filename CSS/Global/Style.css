@@ -455,9 +455,11 @@ td {
 	background: #e0d8d8;
 }
 
-/* Подвинуты пункты маркированного списка */
-ul li {
-	margin-left: -1rem;
+/* Подвинуты пункты маркированного списка левой менюшки */
+.left-menu ul li {
+	margin-left: -1.8em;
+	margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
 }
 
 /* Стиль для маркированного списка верхней менюшки */
