@@ -19,45 +19,6 @@
    inkscape:export-ydpi="87.782394"
    shape-rendering="crispEdges">
   <defs
-	
-	
-	
-	
-	<style>
-	
-	@font-face {
-font-family: "FuturaBookC"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC.ttf") format("truetype"); 
-font-style: normal; 
-font-weight: normal;
-font-display: swap;
-unicode-range: U+0000-A000; 
-}
-
-/*@font-face {
-font-family: "FuturaBookC-Italic"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC-Italic.ttf") format("truetype"); 
-font-style: italic; 
-font-weight: normal;
-font-display: swap;
-unicode-range: U+0000-A000; 
-}
-
-*/@font-face {
-font-family: "FuturaDemiC"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC.ttf") format("truetype"); 
-font-style: normal; 
-font-weight: normal;
-font-display: swap;
-unicode-range: U+0000-A000;
-}
-	
-	</style>
-	
-	
-	
-	
-	
      id="defs90">
     <inkscape:path-effect
        effect="fillet_chamfer"
@@ -1367,6 +1328,34 @@ unicode-range: U+0000-A000;
          style="fill:#717171;fill-opacity:0.51004;fill-rule:evenodd;stroke:#717171;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:0.51004"
          id="path2080-2-9-0" />
     </marker>
+	
+		
+	
+	
+	
+	<style>
+	
+	@font-face {
+font-family: "FuturaBookC"; 
+src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal;
+font-display: swap;
+unicode-range: U+0000-A000; 
+}
+
+@font-face {
+font-family: "FuturaDemiC"; 
+src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal;
+font-display: swap;
+unicode-range: U+0000-A000;
+}
+	
+	</style>
+	
+	
   </defs>
   <sodipodi:namedview
      id="base"
