@@ -24,7 +24,7 @@ src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC.ttf") format("truetyp
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
-unicode-range: U+0000-A000; 
+unicode-range: U+0000-A000;
 }/*
 
 @font-face {
@@ -54,14 +54,14 @@ font-display: swap;
 unicode-range: U+0000-A000; 
 }
 
-@font-face {
+*/@font-face {
 font-family: "FuturaMediumC"; 
 src: url("https://ltva1.github.io/Fonts/Futura/FuturaMediumC.ttf") format("truetype"); 
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-A000; 
-}
+}/*
 
 @font-face {
 font-family: "FuturaMediumC-Italic"; 
