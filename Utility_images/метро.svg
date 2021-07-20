@@ -1335,10 +1335,19 @@
 	
 	<style>
 	
-	@font-face {
+@font-face {
 font-family: "FuturaBookC"; 
 src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC.ttf") format("truetype"); 
 font-style: normal; 
+font-weight: normal;
+font-display: swap;
+unicode-range: U+0000-A000; 
+}
+
+@font-face {
+font-family: "FuturaBookC-Italic"; 
+src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC-Italic.ttf") format("truetype"); 
+font-style: italic; 
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-A000; 
@@ -1351,6 +1360,51 @@ font-style: normal;
 font-weight: normal;
 font-display: swap;
 unicode-range: U+0000-A000;
+}
+
+@font-face {
+font-family: "FuturaDemiC-Italic"; 
+src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-style: italic; 
+font-weight: normal;
+font-display: swap;
+unicode-range: U+0000-A000; 
+}
+
+@font-face {
+font-family: "FuturaLightC"; 
+src: url("https://ltva1.github.io/Fonts/Futura/FuturaLightC.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal;
+font-display: swap;
+unicode-range: U+0000-A000; 
+}
+
+@font-face {
+font-family: "FuturaLightC-Italic"; 
+src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-style: italic; 
+font-weight: normal;
+font-display: swap;
+unicode-range: U+0000-A000; 
+}
+
+@font-face {
+font-family: "FuturaMediumC"; 
+src: url("https://ltva1.github.io/Fonts/Futura/FuturaMediumC.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal;
+font-display: swap;
+unicode-range: U+0000-A000; 
+}
+
+@font-face {
+font-family: "FuturaMediumC-Italic"; 
+src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-style: italic; 
+font-weight: normal;
+font-display: swap;
+unicode-range: U+0000-A000; 
 }
 	
 	</style>
