@@ -1412,9 +1412,9 @@ unicode-range: U+0000-A000;
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="7148.594"
-     inkscape:cy="1305.1963"
+     inkscape:zoom="0.0625"
+     inkscape:cx="5758.3683"
+     inkscape:cy="6608.0507"
      inkscape:document-units="cm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -1434,7 +1434,9 @@ unicode-range: U+0000-A000;
      inkscape:object-paths="true"
      inkscape:snap-bbox-midpoints="true"
      inkscape:snap-bbox-edge-midpoints="true"
-     showguides="false">
+     showguides="false"
+     inkscape:snap-nodes="false"
+     inkscape:snap-global="true">
     <inkscape:grid
        type="xygrid"
        id="grid10"
@@ -19223,5 +19225,12 @@ unicode-range: U+0000-A000;
          x="1852.3391"
          y="342.02786"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:FuturaDemiC;-inkscape-font-specification:FuturaDemiC;fill:#787878;fill-opacity:1;stroke-width:0.26;stroke-miterlimit:4;stroke-dasharray:none">Note: TFPP — Thermonuclear Fusion Power Plant.</tspan></text>
+    <rect
+       style="fill:none;stroke:#ffff00;stroke-width:50.20999954;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5844"
+       width="3552.2942"
+       height="2452.2942"
+       x="22.602856"
+       y="22.602856" />
   </g>
 </svg>
