@@ -1328,16 +1328,12 @@
          style="fill:#717171;fill-opacity:0.51004;fill-rule:evenodd;stroke:#717171;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:0.51004"
          id="path2080-2-9-0" />
     </marker>
-	
-		
-	
-	
-	
-	<style>
+    <style
+       id="style94">
 	
 @font-face {
-font-family: "FuturaBookC"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC.ttf") format("truetype"); 
+font-family: &quot;FuturaBookC&quot;; 
+src: url(&quot;https://ltva1.github.io/Fonts/Futura/FuturaBookC.ttf&quot;) format(&quot;truetype&quot;); 
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
@@ -1345,8 +1341,8 @@ unicode-range: U+0000-A000;
 }
 
 @font-face {
-font-family: "FuturaBookC-Italic"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaBookC-Italic.ttf") format("truetype"); 
+font-family: &quot;FuturaBookC-Italic&quot;; 
+src: url(&quot;https://ltva1.github.io/Fonts/Futura/FuturaBookC-Italic.ttf&quot;) format(&quot;truetype&quot;); 
 font-style: italic; 
 font-weight: normal;
 font-display: swap;
@@ -1354,8 +1350,8 @@ unicode-range: U+0000-A000;
 }
 
 @font-face {
-font-family: "FuturaDemiC"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC.ttf") format("truetype"); 
+font-family: &quot;FuturaDemiC&quot;; 
+src: url(&quot;https://ltva1.github.io/Fonts/Futura/FuturaDemiC.ttf&quot;) format(&quot;truetype&quot;); 
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
@@ -1363,8 +1359,8 @@ unicode-range: U+0000-A000;
 }
 
 @font-face {
-font-family: "FuturaDemiC-Italic"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-family: &quot;FuturaDemiC-Italic&quot;; 
+src: url(&quot;https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf&quot;) format(&quot;truetype&quot;); 
 font-style: italic; 
 font-weight: normal;
 font-display: swap;
@@ -1372,8 +1368,8 @@ unicode-range: U+0000-A000;
 }
 
 @font-face {
-font-family: "FuturaLightC"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaLightC.ttf") format("truetype"); 
+font-family: &quot;FuturaLightC&quot;; 
+src: url(&quot;https://ltva1.github.io/Fonts/Futura/FuturaLightC.ttf&quot;) format(&quot;truetype&quot;); 
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
@@ -1381,8 +1377,8 @@ unicode-range: U+0000-A000;
 }
 
 @font-face {
-font-family: "FuturaLightC-Italic"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-family: &quot;FuturaLightC-Italic&quot;; 
+src: url(&quot;https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf&quot;) format(&quot;truetype&quot;); 
 font-style: italic; 
 font-weight: normal;
 font-display: swap;
@@ -1390,8 +1386,8 @@ unicode-range: U+0000-A000;
 }
 
 @font-face {
-font-family: "FuturaMediumC"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaMediumC.ttf") format("truetype"); 
+font-family: &quot;FuturaMediumC&quot;; 
+src: url(&quot;https://ltva1.github.io/Fonts/Futura/FuturaMediumC.ttf&quot;) format(&quot;truetype&quot;); 
 font-style: normal; 
 font-weight: normal;
 font-display: swap;
@@ -1399,8 +1395,8 @@ unicode-range: U+0000-A000;
 }
 
 @font-face {
-font-family: "FuturaMediumC-Italic"; 
-src: url("https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf") format("truetype"); 
+font-family: &quot;FuturaMediumC-Italic&quot;; 
+src: url(&quot;https://ltva1.github.io/Fonts/Futura/FuturaDemiC-Italic.ttf&quot;) format(&quot;truetype&quot;); 
 font-style: italic; 
 font-weight: normal;
 font-display: swap;
@@ -1408,8 +1404,6 @@ unicode-range: U+0000-A000;
 }
 	
 	</style>
-	
-	
   </defs>
   <sodipodi:namedview
      id="base"
@@ -1418,17 +1412,17 @@ unicode-range: U+0000-A000;
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="11307.622"
-     inkscape:cy="2326.0989"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="7148.594"
+     inkscape:cy="1305.1963"
      inkscape:document-units="cm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="true"
      inkscape:snap-object-midpoints="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
+     inkscape:window-x="1672"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:snap-grids="true"
@@ -1461,7 +1455,7 @@ unicode-range: U+0000-A000;
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -18949,7 +18943,7 @@ unicode-range: U+0000-A000;
          id="tspan4342-93-0-1-3-1-71"
          x="1988.22"
          y="430.51648"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.5px;font-family:FuturaMediumC;-inkscape-font-specification:FuturaMediumC;stroke-width:0.264583">Верхневоршская АЭС</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.5px;font-family:FuturaMediumC;-inkscape-font-specification:FuturaMediumC;stroke-width:0.264583">Верхневоршская ТЯЭС</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2px;line-height:1.25;font-family:FuturaDemiC;-inkscape-font-specification:FuturaDemiC;fill:#787878;fill-opacity:1;stroke-width:0.26;stroke-miterlimit:4;stroke-dasharray:none"
@@ -18960,7 +18954,7 @@ unicode-range: U+0000-A000;
          id="tspan4350-7-2-9-0-6-9"
          x="1988.4199"
          y="432.74997"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2px;font-family:FuturaMediumC;-inkscape-font-specification:FuturaMediumC;fill:#787878;fill-opacity:1;stroke-width:0.26;stroke-miterlimit:4;stroke-dasharray:none">Verhnevorshskaya atomic plant</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2px;font-family:FuturaMediumC;-inkscape-font-specification:FuturaMediumC;fill:#787878;fill-opacity:1;stroke-width:0.26;stroke-miterlimit:4;stroke-dasharray:none">Verhnevorshskaya TFPP</tspan></text>
     <path
        style="font-variation-settings:normal;vector-effect:none;fill:none;fill-opacity:1;stroke:#b800d4;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
        d="m 617.87498,780.37497 -1.25,1.25"
@@ -19207,5 +19201,27 @@ unicode-range: U+0000-A000;
        style="font-variation-settings:normal;vector-effect:none;fill:none;fill-opacity:1;stroke:#9a0000;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
        d="m 2939.375,671.62499 -1.25,-1.25"
        id="path2463-0-6-3-3-7-4-8-7-7-7-7-4-5-5-1-8-2-2-3-3-6-9-9-6-2" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:FuturaMediumC;-inkscape-font-specification:FuturaMediumC;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="1852.2177"
+       y="339.54373"
+       id="text4335"><tspan
+         sodipodi:role="line"
+         id="tspan4333"
+         x="1852.2177"
+         y="339.54373"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:FuturaMediumC;-inkscape-font-specification:FuturaMediumC;stroke-width:0.264583">Примечание: ТЯЭС — термоядерная электростанция.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;line-height:1.25;font-family:FuturaDemiC;-inkscape-font-specification:FuturaDemiC;fill:#787878;fill-opacity:1;stroke-width:0.26;stroke-miterlimit:4;stroke-dasharray:none"
+       x="1852.3391"
+       y="342.02786"
+       id="text4339"><tspan
+         sodipodi:role="line"
+         id="tspan4337"
+         x="1852.3391"
+         y="342.02786"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:FuturaDemiC;-inkscape-font-specification:FuturaDemiC;fill:#787878;fill-opacity:1;stroke-width:0.26;stroke-miterlimit:4;stroke-dasharray:none">Note: TFPP — Thermonuclear Fusion Power Plant.</tspan></text>
   </g>
 </svg>
