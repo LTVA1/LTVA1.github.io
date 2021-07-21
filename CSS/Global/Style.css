@@ -223,7 +223,7 @@ hr {
 .header {
 	border: none;
 	background: 
-		radial-gradient(circle at 10% 55%, #dd5500ff 0%, #dd5500ff 0.3%, #dddd00ff 1.5%, #dddd00ff 1.1%, #dd55009f 3%, #00000000 4%),
+		radial-gradient(circle at 13em 50%, #dd5500ff 0em, #dd5500ff 0.3em, #dddd00ff 1.5em, #dddd00ff 1.1em, #dd55009f 3em, #00000000 4em),
 		linear-gradient(0deg, rgba(68,68,68,1), rgba(44,44,44,0.5)),
 		repeating-linear-gradient(-60deg, #bb8800 0%, #b02020 1%, #b02020 1%, #bb8800 0%, #b02020 12%);
 	height: 150px;
