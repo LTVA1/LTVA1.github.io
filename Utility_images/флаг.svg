@@ -15,7 +15,38 @@
    inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
    sodipodi:docname="флаг.svg">
   <defs
-     id="defs2" />
+     id="defs2">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect12768"
+       is_visible="true"
+       lpeversion="1"
+       satellites_param="F,0,0,1,0,8,0,1 @ F,0,0,1,0,8,0,1 @ F,0,0,1,0,8,0,1 @ F,0,0,1,0,8,0,1"
+       unit="mm"
+       method="auto"
+       mode="F"
+       radius="8"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="false"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Blur"
+       id="filter12790"
+       x="-1"
+       y="-1"
+       width="5"
+       height="5">
+      <feGaussianBlur
+         stdDeviation="2 2"
+         result="blur"
+         id="feGaussianBlur12788" />
+    </filter>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -23,9 +54,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="516.062"
-     inkscape:cy="147.4042"
+     inkscape:zoom="2.0749666"
+     inkscape:cx="106.18634"
+     inkscape:cy="212.67983"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -34,13 +65,18 @@
      inkscape:window-height="987"
      inkscape:window-x="1672"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true">
     <inkscape:grid
        type="xygrid"
        id="grid10"
        units="mm"
-       spacingx="0.25"
-       spacingy="0.25" />
+       spacingx="0.05"
+       spacingy="0.05" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -50,7 +86,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -65,5 +101,43 @@
        height="90"
        x="0"
        y="0" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#c90000;fill-opacity:1;fill-rule:evenodd;stroke:#d29c00;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       id="rect12766"
+       width="48.75"
+       height="48.75"
+       x="55.625"
+       y="20.625"
+       inkscape:path-effect="#path-effect12768"
+       d="m 63.625,20.625 h 32.75 a 8,8 45 0 1 8,8 v 32.75 a 8,8 135 0 1 -8,8 h -32.75 a 8,8 45 0 1 -8,-8 v -32.75 a 8,8 135 0 1 8,-8 z"
+       sodipodi:type="rect" />
+    <circle
+       style="fill:none;fill-opacity:1;stroke:#ffff00;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path12360"
+       cx="80"
+       cy="45"
+       r="15" />
+    <circle
+       style="fill:#ffff03;fill-opacity:1;stroke:#c90000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path11771-5"
+       cx="90"
+       cy="33.75"
+       r="2.5" />
+    <circle
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ff0001;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;filter:url(#filter12790);stop-color:#000000;stop-opacity:1"
+       id="path12770"
+       cx="80"
+       cy="45"
+       r="6.25" />
+    <circle
+       style="fill:#ffff31;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+       id="path11771"
+       cx="80"
+       cy="45"
+       r="2.5" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#00b300;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       d="M 15.000001,48.000001 21,47 l 7.500001,-2.999999 17,-1.000001 -1,5.000001 z"
+       id="path12812" />
   </g>
 </svg>
