@@ -5,7 +5,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="360cm"
@@ -19226,18 +19225,5 @@ unicode-range: U+0000-A000;
          x="1852.3391"
          y="342.02786"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:FuturaDemiC;-inkscape-font-specification:FuturaDemiC;fill:#787878;fill-opacity:1;stroke-width:0.26;stroke-miterlimit:4;stroke-dasharray:none">Note: TFPP — Thermonuclear Fusion Power Plant.</tspan></text>
-    <a
-       id="a5187"
-       xlink:href="https://nahui.com"
-       target="https://nahui.com"
-       transform="matrix(37.882976,0,0,28.824945,-8672.1365,-40366.098)">
-      <rect
-         style="fill:none;stroke:#ffff00;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"
-         id="rect5185"
-         width="95.779167"
-         height="85.724998"
-         x="228.59999"
-         y="1401.7625" />
-    </a>
   </g>
 </svg>
