@@ -455,6 +455,43 @@ td {
 	background: #e0d8d8;
 }
 
+/* Таблица для картинок всяких */
+
+.image-holder {
+	border: 1px solid #999999;
+	border-collapse: collapse;
+	width: 100%;
+	background: #ffffff;
+	margin: 0px;
+}
+
+/* Ячейка-заголовок */
+
+.image-holder th {
+	border: none;
+	padding: 0px; 
+	margin: 0px;
+	background: #ffffff;
+	border: 1px solid #999999;
+}
+
+/* Обычная ячейка */
+
+.image-holder td {
+	padding: 0px; 
+	margin: 0px;
+	border: none;
+	text-align: center;
+	background: #ffeeee;
+	font-weight: bold;
+	border: 1px solid #999999;
+}
+
+.image-holder img {
+	vertical-align: bottom;
+	display: block;
+}
+
 /* Подвинуты пункты маркированного списка левой менюшки */
 .left-menu ul li {
 	margin-left: -1.8em;
