@@ -457,12 +457,15 @@ td {
 
 /* Таблица для картинок всяких */
 
+.image-div {  
+	margin: 0 0em 1em 2em;
+}
+
 .image-holder {
 	border: 1px solid #999999;
 	border-collapse: collapse;
 	width: 100%;
 	background: #ffffff;
-	margin: 0px;
 }
 
 /* Ячейка-заголовок */
@@ -484,6 +487,7 @@ td {
 	text-align: center;
 	background: #ffeeee;
 	font-weight: bold;
+	padding: 0.5em;
 	border: 1px solid #999999;
 }
 
