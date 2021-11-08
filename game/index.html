@@ -274,83 +274,22 @@ Setting.addList("textDelay", {
 
 &lt;nav id=&quot;menu&quot; role=&quot;navigation&quot;&gt;&lt;ul id=&quot;menu-story&quot;&gt;&lt;/ul&gt;&lt;ul id=&quot;menu-core&quot;&gt;&lt;li id=&quot;menu-item-saves&quot;&gt;&lt;a tabindex=&quot;0&quot;&gt;Saves&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;menu-item-settings&quot;&gt;&lt;a tabindex=&quot;0&quot;&gt;Settings&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;</tw-passagedata><tw-passagedata pid="7" name="StoryInit" tags="Инициализация" position="3800,1750" size="100,100">//музыка
 
-&lt;&lt;set _OPL3_1 = &quot;sounds/naruto - OPL3 MSX demo 1.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;morning_menu_bgm&quot; _OPL3_1&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;morning_menu_bgm&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
+&lt;&lt;cacheaudio &quot;morning_menu_bgm&quot; &quot;sounds/naruto - OPL3 MSX demo 1.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;day_menu_bgm&quot; &quot;sounds/naruto - OPL3 MSX demo 2.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;evening_menu_bgm&quot; &quot;sounds/naruto - OPL3 MSX demo 3.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;night_menu_bgm&quot; &quot;sounds/naruto - OPL3 MSX demo 4.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;menu_bgm_1&quot; &quot;sounds/John Hassink - Sorcerian - The stolen scepter OPL4 cover.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;menu_bgm_2&quot; &quot;sounds/Shogoon - Do Nothing for 3 Minutes [C64 3SID].mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;gameover_bgm&quot; &quot;sounds/Stinsen - Guilty Pleasures [C64 2SID].mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;end_bgm&quot; &quot;sounds/Stinsen - Double Rainbow [C64].mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;drive_bgm_1&quot; &quot;sounds/zircon - megasid 2066 [C64 25SID].mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;drive_bgm_2&quot; &quot;sounds/naruto - MoonDriver Demo (MSX2+) Encounter the Unknown Environment [OPL4].mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;drive_bgm_3&quot; &quot;sounds/Linus Akesson - Parallelogram.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;drive_bgm_4&quot; &quot;sounds/HUBBARD.RAD - Reality Adlib Tracker.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;night_bgm_1&quot; &quot;sounds/Shogoon - Raindropsies [C64].mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;night_bgm_2&quot; &quot;sounds/Encore - What is Love [OPL3].mp3&quot;&gt;&gt;
 
-&lt;&lt;set _OPL3_2 = &quot;sounds/naruto - OPL3 MSX demo 2.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;day_menu_bgm&quot; _OPL3_2&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;day_menu_bgm&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _OPL3_3 = &quot;sounds/naruto - OPL3 MSX demo 3.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;evening_menu_bgm&quot; _OPL3_3&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;evening_menu_bgm&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _OPL3_4 = &quot;sounds/naruto - OPL3 MSX demo 4.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;night_menu_bgm&quot; _OPL3_4&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;night_menu_bgm&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _OPL4 = &quot;sounds/John Hassink - Sorcerian - The stolen scepter OPL4 cover.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;menu_bgm_1&quot; _OPL4&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;menu_bgm_1&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _threeSID = &quot;sounds/Shogoon - Do Nothing for 3 Minutes [C64 3SID].mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;menu_bgm_2&quot; _threeSID&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;menu_bgm_2&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _twoSID = &quot;sounds/Stinsen - Guilty Pleasures [C64 2SID].mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;gameover_bgm&quot; _twoSID&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;gameover_bgm&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _SID = &quot;sounds/Stinsen - Double Rainbow [C64].mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;end_bgm&quot; _SID&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;end_bgm&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _SID1 = &quot;sounds/zircon - megasid 2066 [C64 25SID].mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;drive_bgm_1&quot; _SID1&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;drive_bgm_1&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _OPL4_1 = &quot;sounds/naruto - MoonDriver Demo (MSX2+) Encounter the Unknown Environment [OPL4].mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;drive_bgm_2&quot; _OPL4_1&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;drive_bgm_2&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _FM = &quot;sounds/Linus Akesson - Parallelogram.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;drive_bgm_3&quot; _FM&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;drive_bgm_3&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _FM1 = &quot;sounds/HUBBARD.RAD - Reality Adlib Tracker.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;drive_bgm_4&quot; _FM1&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;drive_bgm_4&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
-
-&lt;&lt;set _SID2 = &quot;sounds/Shogoon - Raindropsies [C64].mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;night_bgm_1&quot; _SID2&gt;&gt;
-&lt;&lt;createaudiogroup &quot;:ui&quot;&gt;&gt;
-	&lt;&lt;track &quot;night_bgm_1&quot;&gt;&gt;
-&lt;&lt;/createaudiogroup&gt;&gt;
+&lt;&lt;waitforaudio&gt;&gt;
 
 //переменные и статы
 
