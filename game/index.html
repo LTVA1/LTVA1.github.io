@@ -218,7 +218,7 @@ td {
 	text-align: left;
 	z-index: 100;
 }
-/* HoverTxt code - End */</style><script role="script" id="twine-user-script" type="text/twine-javascript">setup.Array = [];
+/* HoverTxt code - End */</style><script role="script" id="twine-user-script" type="text/twine-javascript">
 
 /* Настройки */
 
@@ -243,7 +243,7 @@ Setting.addList("textDelay", {
 
 &lt;label&gt;What is your name? &lt;&lt;textbox &quot;$name&quot; &quot;Frank&quot;&gt;&gt;&lt;/label&gt; */</tw-passagedata><tw-passagedata pid="2" name="в жопу" tags="" position="3400,1800" size="100,100">Вы в жопе! [[Начало]]
 
-&lt;img src=&quot;site\Utility_images\taingia_v2_preview.png&quot; width=&quot;100%&quot;&gt;</tw-passagedata><tw-passagedata pid="3" name="StorySubtitle" tags="Интерфейс" position="3600,1500" size="100,100">v0.1</tw-passagedata><tw-passagedata pid="4" name="StoryCaption" tags="Интерфейс" position="3600,1750" size="100,100">Вот тута при наведении курсора должно появляться окно с кучей статов и инвентарём, но пока ничего нет, потому что &lt;b&gt;потому что&lt;/b&gt;.
+&lt;img src=&quot;images\Без имени-1.png&quot; width=&quot;100%&quot;&gt;</tw-passagedata><tw-passagedata pid="3" name="StorySubtitle" tags="Интерфейс" position="3600,1500" size="100,100">v0.1</tw-passagedata><tw-passagedata pid="4" name="StoryCaption" tags="Интерфейс" position="3600,1750" size="100,100">Вот тута при наведении курсора должно появляться окно с кучей статов и инвентарём, но пока ничего нет, потому что &lt;b&gt;потому что&lt;/b&gt;.
 
 &lt;&lt;button &quot;Меню&quot;&gt;&gt;
 	&lt;&lt;script&gt;&gt;
@@ -288,8 +288,14 @@ Setting.addList("textDelay", {
 &lt;&lt;cacheaudio &quot;drive_bgm_4&quot; &quot;sounds/HUBBARD.RAD - Reality Adlib Tracker.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;night_bgm_1&quot; &quot;sounds/Shogoon - Raindropsies [C64].mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;night_bgm_2&quot; &quot;sounds/Encore - What is Love [OPL3].mp3&quot;&gt;&gt;
-
-&lt;&lt;waitforaudio&gt;&gt;
+&lt;&lt;cacheaudio &quot;night_city_bgm&quot; &quot;sounds/Fearofdark - Don&#39;t Leave Me Out Here in the Dark.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;night_bgm_lunatico&quot; &quot;sounds/Linus Akesson - Lunatico [C64] excerpt 1.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;night_bgm_umbrella&quot; &quot;sounds/Linus Akesson - Lunatico [C64] excerpt 2.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;ruins_bgm_1&quot; &quot;sounds/Nightbeat - Miriel.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;ruins_bgm_2&quot; &quot;sounds/Hard Transition (original by RigidatoMS, OPL3 cover by SuperJet Spade).mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;tree_bgm&quot; &quot;sounds/Jeroen Tel - Stranglehold [XM].mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;ancient_bgm&quot; &quot;sounds/Jeroen Tel - Stranglehold II Letting Go [XM].mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;credits_bgm&quot; &quot;sounds/Linus Akesson - Lunatico Note [C64].mp3&quot;&gt;&gt;
 
 //переменные и статы
 
@@ -297,10 +303,6 @@ Setting.addList("textDelay", {
 &lt;&lt;set $CurHP = 100&gt;&gt;
 &lt;&lt;set $MaxTireness = 100&gt;&gt; //усталость
 &lt;&lt;set $Tireness = 100&gt;&gt;
-&lt;&lt;set $MaxHunger = 100&gt;&gt; //голод
-&lt;&lt;set $Hunger = 100&gt;&gt;
-&lt;&lt;set $MaxThirst = 100&gt;&gt; //жажда
-&lt;&lt;set $Thirst = 100&gt;&gt;
 
 &lt;&lt;set $Strength = 0&gt;&gt; //сила
 &lt;&lt;set $Dexterity = 0&gt;&gt; //ловкость
@@ -348,21 +350,13 @@ Setting.addList("textDelay", {
 &lt;&lt;script&gt;&gt;
 	Config.history.maxStates = 0;
 	Config.macros.maxLoopIterations = 9999999999;
-&lt;&lt;/script&gt;&gt;
-
-&lt;&lt;set $sin_LUT = []&gt;&gt;
-
-&lt;&lt;for _i = 0; _i &lt;= 90*1000; _i++&gt;&gt;
-	&lt;&lt;set $sin_LUT.push(Math.sin((_i / 1000) * (Math.PI / 180)))&gt;&gt;
-&lt;&lt;/for&gt;&gt;
-
-&lt;&lt;set setup.sin_LUT = $sin_LUT&gt;&gt;
-
-&lt;&lt;unset $sin_LUT&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Статы и инвентарь" tags="Интерфейс" position="3600,2000" size="100,100">&lt;h2&gt;Статы&lt;/h2&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Статы и инвентарь" tags="Интерфейс" position="3600,2000" size="100,100">&lt;h2&gt;Статы&lt;/h2&gt;
 (Тут нада сунуть основные статы — здоровье, усталость и т.д.)
 
 &lt;table class=&quot;menu&quot;&gt;
 &lt;tr&gt;
+
+/*&lt;&lt;HoverTxtTxt 200 &quot;&lt;td&gt;Сила&lt;&lt;for _i = 0; _i lt $Strength; _i++&gt;&gt;&lt;&lt;print &quot;●&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;for _i = 10; _i gt $Strength; _i--&gt;&gt;&lt;&lt;print &quot;○&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;/td&gt;&quot; &quot;Насколько мощно можешь уебать&quot;&gt;&gt;*/
 
 &lt;td&gt;Сила
 &lt;&lt;for _i = 0; _i lt $Strength; _i++&gt;&gt;&lt;&lt;print &quot;●&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;for _i = 10; _i gt $Strength; _i--&gt;&gt;&lt;&lt;print &quot;○&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;/td&gt;
@@ -441,14 +435,14 @@ Setting.addList("textDelay", {
 &lt;/table&gt;
 
 &lt;button class=&quot;ui-close&quot; style=&quot;font-size: 1.5em; float:right&quot;&gt;Закрыть&lt;/button&gt;
-&lt;pre&gt; &lt;/pre&gt;</tw-passagedata><tw-passagedata pid="9" name="Генерёжка" tags="" position="3400,1550" size="100,100">&lt;&lt;audio $Cur_audio unloop fadeout&gt;&gt;&lt;&lt;script&gt;&gt;
+&lt;pre&gt; &lt;/pre&gt;</tw-passagedata><tw-passagedata pid="9" name="Генерёжка" tags="" position="3400,1550" size="100,100">&lt;&lt;audio $Cur_audio volume $audio_vol fadeoverto 2 0.0&gt;&gt;&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;audio &quot;ruins_bgm_2&quot; play volume 0.0&gt;&gt;&lt;&lt;set $Cur_audio = &quot;ruins_bgm_2&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.1&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.16&gt;&gt;&lt;&lt;script&gt;&gt;
 UIBar.unstow(true);
 
 document.body.style.background = &quot;&quot;;
 &lt;&lt;/script&gt;&gt;Сгенерим перса. Пока только случайная генерация.
 &lt;&lt;set $flag = 0&gt;&gt;&lt;&lt;for $flag lt 1&gt;&gt;&lt;&lt;set $Strength = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Dexterity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Empathy = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Persuasion = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Computer_knowledge = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Intimidation = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Larceny = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Stealth = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Firearms = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Socialize = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Drive = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Medical_treatment = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Survival = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Streetwise = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Attention = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Will = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Charisma = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Fight_dexterity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Craft = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Politics_knowledge = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Creativity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Memory = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Science = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Trickery = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;if 120.5 gt $Strength + $Dexterity + $Empathy + $Persuasion + $Computer_knowledge + $Intimidation + $Larceny + $Stealth + $Firearms + $Socialize + $Drive + $Medical_treatment + $Survival + $Streetwise + $Attention + $Will + $Charisma + $Fight_dexterity + $Craft + $Politics_knowledge + $Creativity + $Memory + $Science + $Trickery&gt;&gt;&lt;&lt;set $flag = 33&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
 
-[[Поехали дальше|Начало]].</tw-passagedata><tw-passagedata pid="10" name="Главное меню" tags="" position="3550,1250" size="200,200">&lt;&lt;script&gt;&gt;
+[[Поехали дальше|Начало]].</tw-passagedata><tw-passagedata pid="10" name="Главное меню" tags="" position="3550,1250" size="200,200">&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;script&gt;&gt;
 UIBar.stow(true);
 
 document.body.style.backgroundSize = &quot;cover&quot;;
@@ -459,28 +453,28 @@ if(Math.random() &lt; 0.9)
 	
 	if(date.getHours() &gt;= 0 &amp;&amp; date.getHours() &lt; 6)
 	{
-		Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;night_menu_bgm&quot; play volume 0.1 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;night_menu_bgm&quot;&gt;&gt;&#39;);
+		Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;night_menu_bgm&quot; play volume 0.0 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;night_menu_bgm&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.1&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.1&gt;&gt;&#39;);
 		document.body.style.background = &quot;url(images/night_background.png) no-repeat&quot;;
 		document.body.style.backgroundSize = &quot;cover&quot;;
 	}
 	
 	if(date.getHours() &gt;= 6 &amp;&amp; date.getHours() &lt; 10)
 	{
-		Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;morning_menu_bgm&quot; play volume 0.1 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;morning_menu_bgm&quot;&gt;&gt;&#39;);
+		Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;morning_menu_bgm&quot; play volume 0.0 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;morning_menu_bgm&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.1&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.1&gt;&gt;&#39;);
 		document.body.style.background = &quot;url(images/morning_background.png) no-repeat&quot;;
 		document.body.style.backgroundSize = &quot;cover&quot;;
 	}
 	
 	if(date.getHours() &gt;= 10 &amp;&amp; date.getHours() &lt; 18)
 	{
-		Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;day_menu_bgm&quot; play volume 0.1 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;day_menu_bgm&quot;&gt;&gt;&#39;);
+		Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;day_menu_bgm&quot; play volume 0.0 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;day_menu_bgm&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.1&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.1&gt;&gt;&#39;);
 		document.body.style.background = &quot;url(images/day_background.png) no-repeat&quot;;
 		document.body.style.backgroundSize = &quot;cover&quot;;
 	}
 	
 	if(date.getHours() &gt;= 18 &amp;&amp; date.getHours() &lt; 23)
 	{
-		Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;evening_menu_bgm&quot; play volume 0.1 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;evening_menu_bgm&quot;&gt;&gt;&#39;);
+		Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;evening_menu_bgm&quot; play volume 0.0 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;evening_menu_bgm&quot;&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.1&gt;&gt;&lt;&lt;set $audio_vol = 0.1&gt;&gt;&#39;);
 		document.body.style.background = &quot;url(images/evening_background.png) no-repeat&quot;;
 		document.body.style.backgroundSize = &quot;cover&quot;;
 	}
@@ -490,23 +484,23 @@ if(Math.random() &lt; 0.9)
 	{
 		if(Math.random() &gt; 0.5)
 		{
-			Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;menu_bgm_1&quot; play volume 0.06 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;menu_bgm_1&quot;&gt;&gt;&#39;);
+			Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;menu_bgm_1&quot; play volume 0.0 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;menu_bgm_1&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.06&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.06&gt;&gt;&#39;);
 			document.body.style.background = &quot;url(images/1_background.png) no-repeat&quot;;
 			document.body.style.backgroundSize = &quot;cover&quot;;
 		}
 		
 		else
 		{
-			Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;menu_bgm_2&quot; play volume 0.2 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;menu_bgm_2&quot;&gt;&gt;&#39;);
+			Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;menu_bgm_2&quot; play volume 0.0 loop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;menu_bgm_2&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.2&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.2&gt;&gt;&#39;);
 			document.body.style.background = &quot;url(images/2_background.png) no-repeat&quot;;
 			document.body.style.backgroundSize = &quot;cover&quot;;
 		}
 	}
 
 &lt;&lt;/script&gt;&gt;
-[[Генерёжка]]
+[[Генерёжка]] изменение
 
-&lt;&lt;print setup.sin_LUT[89*1000]&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Меню, которое появляется при наведении курсора на предмет в инвентаре" tags="widget nobr" position="3600,2125" size="100,100">/*  HoverTxt : Show notepad icon shows some wikified text in a window of width X pixels above an icon when it&#39;s hovered over.  */
+&lt;&lt;HoverTxtTxt 200 &quot;fff&quot; &quot;dfgjsedgh&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Меню, которое появляется при наведении курсора на предмет в инвентаре" tags="widget nobr" position="3600,2125" size="100,100">/*  HoverTxt : Show notepad icon shows some wikified text in a window of width X pixels above an icon when it&#39;s hovered over.  */
 /*  EXAMPLE: &lt;&lt;HoverTxt 200 &quot;images/shit_in_4k.png&quot; &quot;dat is shit in ultra hd lol&quot;&gt;&gt;  */
 /*  EXAMPLE: &lt;&lt;HoverTxt 300 &quot;images/shit_in_4k.png&quot; &#96;someFunction()&#96;&gt;&gt;  */
 &lt;&lt;widget &quot;HoverTxt&quot;&gt;&gt;
@@ -522,6 +516,28 @@ if(Math.random() &lt; 0.9)
 		&lt;&lt;set _HoverTxtCount += 1&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 	&lt;a class=&quot;hoverTxt&quot; style=&quot;text-decoration: none;&quot;&gt;&lt;img @src=&quot;$args[1]&quot;&gt;
+		&lt;span @id=&quot;&#39;hoverTxt&#39; + _HoverTxtCount&quot; class=&quot;hoverBox&quot; @style=&quot;&#39;left: -&#39; + _left + &#39;px; width: &#39; + _width + &#39;px;&#39;&quot;&gt;
+			&lt;&lt;print $args[2]&gt;&gt;
+		&lt;/span&gt;
+	&lt;/a&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+/*  EXAMPLE: &lt;&lt;HoverTxt 200 &quot;what is the text&quot; &quot;what is in kinda footnote?&quot;&gt;&gt;  */
+
+&lt;&lt;widget &quot;HoverTxtTxt&quot;&gt;&gt;
+	&lt;&lt;if !Number.isInteger($args[0])&gt;&gt;
+		&lt;&lt;set _width = 200&gt;&gt;  /* Default to a width of 200 if an invalid width is passed. */
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _width = $args[0]&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;&lt;set _left = Math.trunc(_width / 2) - 11&gt;&gt;
+	&lt;&lt;if ndef _HoverTxtCount&gt;&gt;
+		&lt;&lt;set _HoverTxtCount = 1&gt;&gt;
+	&lt;&lt;else&gt;&gt;
+		&lt;&lt;set _HoverTxtCount += 1&gt;&gt;
+	&lt;&lt;/if&gt;&gt;
+	&lt;a class=&quot;hoverTxt&quot; style=&quot;text-decoration: none; color: #fff;&quot;&gt;&lt;&lt;print $args[1]&gt;&gt;
 		&lt;span @id=&quot;&#39;hoverTxt&#39; + _HoverTxtCount&quot; class=&quot;hoverBox&quot; @style=&quot;&#39;left: -&#39; + _left + &#39;px; width: &#39; + _width + &#39;px;&#39;&quot;&gt;
 			&lt;&lt;print $args[2]&gt;&gt;
 		&lt;/span&gt;
