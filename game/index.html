@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking">Your browser lacks required capabilities. Please upgrade it or switch to another to continue.</div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Что произошло в Таингии?" startnode="10" creator="Twine" creator-version="2.3.14" ifid="647F37D7-036E-4BCB-B7A3-84DC3A9BB954" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">#menu-item-restart {
+	<tw-storydata name="Что произошло в Таингии?" startnode="8" creator="Twine" creator-version="2.3.14" ifid="647F37D7-036E-4BCB-B7A3-84DC3A9BB954" zoom="0.6" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">#menu-item-restart {
 	display: none; 
 }
 
@@ -110,11 +110,19 @@ body {
 	max-width: none;
 }
 
+.passage {
+	line-height: 1.3;
+}
+
 .ui-close a {
 	color: #fff;
 }
 .ui-close a:hover {
 	text-decoration:none;
+}
+
+#ui-bar-body {
+	padding: 0 1.6em; 
 }
 
 #ui-dialog {
@@ -218,61 +226,409 @@ td {
 	text-align: left;
 	z-index: 100;
 }
-/* HoverTxt code - End */</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+/* HoverTxt code - End */
 
-/* Настройки */
-
-function videoMuteHandler() {
-	// (Un)Mute the videos
-	$("video").prop("muted", settings.videoMute);  // (Un)Mute all videos
+/* Used to align label for volume slider */
+input[type=range] {
+	vertical-align: middle;
 }
-Setting.addToggle("videoMute", {
-	label	 : "Video Mute",
-	default  : false,
-	onInit	 : videoMuteHandler,
-	onChange : videoMuteHandler
-});
-Setting.addList("textDelay", {
-	label	: "Choose how long it takes for text to appear.",
-	list	: ["No delay", "1s", "2s", "3s"],
-	default	: "2s"
-});</script><tw-tag name="widget" color="red"></tw-tag>,<tw-tag name="Инициализация" color="yellow"></tw-tag>,<tw-tag name="Интерфейс" color="red"></tw-tag><tw-passagedata pid="1" name="Начало" tags="" position="3400,1675" size="100,100">Тест.
-Иди [[сюда|в жопу]].
 
-/* &lt;&lt;print Save.serialize()&gt;&gt; 
 
-&lt;label&gt;What is your name? &lt;&lt;textbox &quot;$name&quot; &quot;Frank&quot;&gt;&gt;&lt;/label&gt; */</tw-passagedata><tw-passagedata pid="2" name="в жопу" tags="" position="3400,1800" size="100,100">Вы в жопе! [[Начало]]
 
-&lt;img src=&quot;images\Без имени-1.png&quot; width=&quot;100%&quot;&gt;</tw-passagedata><tw-passagedata pid="3" name="StorySubtitle" tags="Интерфейс" position="3600,1500" size="100,100">v0.1</tw-passagedata><tw-passagedata pid="4" name="StoryCaption" tags="Интерфейс" position="3600,1750" size="100,100">Вот тута при наведении курсора должно появляться окно с кучей статов и инвентарём, но пока ничего нет, потому что &lt;b&gt;потому что&lt;/b&gt;.
 
-&lt;&lt;button &quot;Меню&quot;&gt;&gt;
-	&lt;&lt;script&gt;&gt;
-	Dialog.setup(&quot;ПАУЗА АСТАНАВИТЕС&quot;);
-	Dialog.wiki(Story.get(&quot;Пауза&quot;).processText());
+
+
+
+
+
+/* Vertical Health Bar - Start */
+.vertbarbkg {  /* default class for all vertical bar backgrounds */
+	position: relative;
+	width: 12px;
+	height: 100%;
+	background-color: #000;
+
+	z-index: 10;
+	visibility: visible;
+}
+.vertbar {  /* default class for all vertical bars */
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 12px;
+	z-index: 20;
+	transition: height ease 1s;
+}
+#verticalhealthbarbkg {  /* custom positioning for specific vertical bar backgrounds */
+	--bkg-top: 133px;  /* set top here */
+	position: absolute;
+	top: 2px;  /* IE workaround */
+	top: var(--bkg-top);
+	left: 268px;
+	height: calc(100vh - 155px);  /* IE workaround */
+	height: calc(100vh - 22px - var(--bkg-top));
+}
+#verticalhealthbar {  /* colors for specific vertical bars */
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), radial-gradient( circle at bottom right, #c00, #c00 60% );
+}
+
+
+
+.vertbarbkg2 {  /* default class for all vertical bar backgrounds */
+	position: relative;
+	width: 12px;
+	height: 100%;
+	background-color: #000;
+
+	z-index: 10;
+	visibility: visible;
+}
+.vertbar2 {  /* default class for all vertical bars */
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 12px;
+	z-index: 20;
+	transition: height ease 1s;
+}
+#verticalhealthbarbkg2 {  /* custom positioning for specific vertical bar backgrounds */
+	--bkg-top: 133px;  /* set top here */
+	position: absolute;
+	top: 2px;  /* IE workaround */
+	top: var(--bkg-top);
+	left: 255px;
+	height: calc(100vh - 155px);  /* IE workaround */
+	height: calc(100vh - 22px - var(--bkg-top));
+}
+#verticalhealthbar2 {  /* colors for specific vertical bars */
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), radial-gradient( circle at bottom right, #ee0, #ee0 60% );
+}
+/* Vertical Health Bar - End */
+
+
+
+
+/* Horizontal Health Bar - Start */
+.hzbarbkg {  /* default class for all horizontal bar backgrounds */
+	position: relative;
+	height: 15px;
+	width: 100%;
+	background-color: #222;
+	background-image: linear-gradient(to right, rgba(68, 68, 68, 0.5), rgba(34, 34, 34, 0.5) 0px), linear-gradient(to bottom, rgba(68, 68, 68, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to left, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px);
+	z-index: 10;
+	visibility: visible;
+}
+.hzbar {  /* default class for all horizontal bars */
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	height: 15px;
+	background-color: transparent;
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px);
+	z-index: 20;
+	transition: width ease 1s, background-color ease 1s;
+}
+
+#hzhealthbar {  /* colors for specific vertical bars */
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), radial-gradient( circle at bottom right, #c00, #c00 60% );
+}
+
+#hzhealthbr {  /* colors for specific vertical bars */
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 0px), linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 0px), radial-gradient( circle at bottom right, #0c0, #0c0 60% );
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Возможность указывать своё имя сейва */
+
+/*Config.saves.onSave = function (save, details) {
+	if (details.type === "slot") {
+		save.title = prompt("Введите название сохранения:", save.title);
+	}
+};*/
+
+/* Локализация */
+
+	/* General. */
+	l10nStrings.identity = 'игры';
+	l10nStrings.aborting = 'Идёт отмена';
+	l10nStrings.cancel   = 'Отменить';
+	l10nStrings.close    = 'Закрыть';
+	l10nStrings.ok       = 'ОК';
+
+	/* Errors. */
+	l10nStrings.errorTitle              = 'Ошибка';
+	l10nStrings.errorToggle             = 'Режим просмотра ошибок';
+	l10nStrings.errorNonexistentPassage = 'Параграф "{passage}" не существует'; // NOTE: `passage` is supplied locally
+	l10nStrings.errorSaveMissingData    = 'в сохранении нет необходимых данных. Сохранение было повреждено или загружен неверный файл';
+	l10nStrings.errorSaveIdMismatch     = 'сохранение от другой {identity}';
+
+	/* Warnings. */
+	l10nStrings._warningIntroLacking  = 'Приносим извинения! В вашем браузере отсутствуют либо выключены необходимые функции';
+	l10nStrings._warningOutroDegraded = ', так что включён ограниченный режим. Вы можете продолжать, но кое-что может работать некорректно.';
+	l10nStrings.warningNoWebStorage   = '{_warningIntroLacking} (Web Storage API){_warningOutroDegraded}';
+	l10nStrings.warningDegraded       = '{_warningIntroLacking} (необходимые для {identity}){_warningOutroDegraded}';
+
+	/* Debug bar. */
+	l10nStrings.debugBarToggle      = 'Панель отладки';
+	l10nStrings.debugBarNoWatches   = '\u2014 отсутствуют отслеживания \u2014';
+	l10nStrings.debugBarAddWatch    = 'Добавить отслеживание';
+	l10nStrings.debugBarDeleteWatch = 'Удалить отслеживание';
+	l10nStrings.debugBarWatchAll    = 'Отслеживать все';
+	l10nStrings.debugBarWatchNone   = 'Удалить все';
+	l10nStrings.debugBarLabelAdd    = 'Добавить';
+	l10nStrings.debugBarLabelWatch  = 'Отслеживать';
+	l10nStrings.debugBarLabelTurn   = 'Ход'; // (noun) chance to act (in a game), moment, period
+	l10nStrings.debugBarLabelViews  = 'Макросы';
+	l10nStrings.debugBarViewsToggle = 'Панель отладки макросов';
+	l10nStrings.debugBarWatchToggle = 'Панель отслеживания';
+
+	/* UI bar. */
+	l10nStrings.uiBarToggle   = 'Открыть/закрыть панель навигации';
+	l10nStrings.uiBarBackward = 'Назад по истории {identity}';
+	l10nStrings.uiBarForward  = 'Вперёд по истории {identity}';
+	l10nStrings.uiBarJumpto   = 'Перейти в определённую точку истории {identity}';
+
+	/* Jump To. */
+	l10nStrings.jumptoTitle       = 'Перейти на';
+	l10nStrings.jumptoTurn        = 'Ход'; // (noun) chance to act (in a game), moment, period
+	l10nStrings.jumptoUnavailable = 'В данный момент нет точек для перехода\u2026';
+
+	/* Saves. */
+	l10nStrings.savesTitle       = 'Сохранения';
+	l10nStrings.savesDisallowed  = 'На этом параграфе сохранение запрещено.';
+	l10nStrings.savesIncapable   = '{_warningIntroLacking}, так что сохранения невозможны в текущей сессии.';
+	l10nStrings.savesLabelAuto   = 'Автосохранение';
+	l10nStrings.savesLabelDelete = 'Удалить';
+	l10nStrings.savesLabelExport = 'Сохранить на диск\u2026';
+	l10nStrings.savesLabelImport = 'Загрузить с диска\u2026';
+	l10nStrings.savesLabelLoad   = 'Загрузить';
+	l10nStrings.savesLabelClear  = 'Удалить все';
+	l10nStrings.savesLabelSave   = 'Сохранить';
+	l10nStrings.savesLabelSlot   = 'Слот';
+	l10nStrings.savesUnavailable = 'Слоты сохранения не обнаружены\u2026';
+	l10nStrings.savesUnknownDate = 'неизвестно';
+
+	/* Settings. */
+	l10nStrings.settingsTitle = 'Настройки';
+	l10nStrings.settingsOff   = 'Выкл.';
+	l10nStrings.settingsOn    = 'Вкл.';
+	l10nStrings.settingsReset = 'По умолчанию';
+
+	/* Restart. */
+	l10nStrings.restartTitle  = 'Начать сначала';
+	l10nStrings.restartPrompt = 'Вы уверены, что хотите начать сначала? Несохранённый прогресс будет утерян.';
+
+	/* Share. */
+	l10nStrings.shareTitle = 'Поделиться';
+
+	/* Autoload. */
+	l10nStrings.autoloadTitle  = 'Автосохранение';
+	l10nStrings.autoloadCancel = 'Начать сначала';
+	l10nStrings.autoloadOk     = 'Загрузить сохранение';
+	l10nStrings.autoloadPrompt = 'Найдено автосохранение. Загрузить его или начать сначала?';
+
+	/* Macros. */
+	l10nStrings.macroBackText   = 'Назад'; // (verb) rewind, revert
+	l10nStrings.macroReturnText = 'Вернуться'; // (verb) go/send back
+
+/* Ползунок регулировки громкости */
+
+(function () {
+	// Set initial values.
+	var options = {
+		current  : 50,  // Default volume level.
+		rangeMax : 100,
+		step	 : 1,
+		setting  : true
+	};
+	
+	Setting.load();
+	
+	if (options.setting && settings.volume) {
+		options.current = parseInt(settings.volume);
+	}
+	var vol = {
+		last: options.current,
+		start: (options.current / options.rangeMax).toFixed(2)
+	};
+
+	// Function to update the volume level.
+	function setVolume (val) {
+		
+		if (typeof val !== 'number') val = Number(val);
+		if (Number.isNaN(val) || val < 0) val = 0;
+		if (val > 1) val = 1;
+		options.current = Math.round(val * options.rangeMax);
+		if (options.setting) {
+			settings.volume = options.current;
+			Setting.save();
+		}
+		if ($('input[name=volume]').val() != options.current) {
+			$('input[name=volume]').val(options.current);
+		}
+		try {
+			if (SimpleAudio) {
+				if (typeof SimpleAudio.volume === 'function') {
+					SimpleAudio.volume(val);
+				} else {
+					SimpleAudio.volume = val;
+				}
+				return val;
+			} else {
+				throw new Error('Cannot access audio API.');
+			}
+		} catch (err) {
+			// Fall back to the wikifier if we have to.
+			console.error(err.message, err);
+			$.wiki('<<masteraudio volume ' + val + '>>');
+			return val;
+		}
+	}
+
+	// Fix the initial volume level display.
+	postdisplay['volume-task'] = function (taskName) {
+		delete postdisplay[taskName];
+		setVolume(vol.start);
+	};
+
+	// Grab volume level changes from the volume slider.
+	$(document).on('input', 'input[name=volume]', function() {
+		var change = parseInt($('input[name=volume]').val());
+		setVolume(change / options.rangeMax);
+		vol.last = change;
+		
+			Setting.save();
+		
+	});
+
+	// Create the <<volume>> macro.
+	Macro.add('volume', {
+		handler : function () {
+			var wrapper = $(document.createElement('span'));
+			var slider = $(document.createElement('input'));
+			var className = 'macro-' + this.name;
+			slider.attr({
+				id		: 'volume-control',
+				type	: 'range',
+				name	: 'volume',
+				min		: '0',
+				max		: options.rangeMax,
+				step	: options.step,
+				value	: options.current
+			});
+			// Class '.macro-volume' and ID '#volume-control' for styling the slider
+			wrapper.append(slider).addClass(className).appendTo(this.output);
+		}
+	});
+
+	// Add Setting API integration for SugarCube 2.26 and higher.
+	function updateVolume () {
+		setVolume(settings.volume / options.rangeMax);
+	}
+	if (options.setting) {
+		if (Setting && Setting.addRange && typeof Setting.addRange === 'function') {
+			Setting.addRange('volume', {
+				label : 'Volume: ',
+				min : 0,
+				max : options.rangeMax,
+				step : options.step,
+				default : options.current,
+				onInit : updateVolume,
+				onChange : updateVolume
+			});
+		} else {
+			console.error('This version of SugarCube does not include the `Settings.addRange()` method; please try updating to the latest version of SugarCube.');
+		}
+	}
+}());
+
+
+/* Health Bar code - Start */
+
+/* Vertical */
+window.Health = function (CurHP, MaxHP, BarID, Horizontal, Container) {
+	if (Container == undefined) {
+		Container = document;
+	}
+	var HP = parseInt((CurHP / MaxHP) * 100).clamp(0, 100);
+	var BarElement = $(Container).find("#" + BarID);
+	if (Horizontal) {
+		BarElement.css({ width: HP + "%" });
+	} else {
+		BarElement.css({ height: HP + "%" });
+	}
+	BarElement.attr("title", CurHP + "/" + MaxHP + " HP");
+	$(Container).find("#" + BarID + "bkg").attr("title", CurHP + "/" + MaxHP + " HP");
+};
+
+
+/* Horizontal */
+window.Health2 = function (CurHP, MaxHP, BarID, Horizontal, Container) {
+	if (Container == undefined) {
+		Container = document;
+	}
+	var HP = parseInt((CurHP / MaxHP) * 100).clamp(0, 100);
+	var BarElement = $(Container).find("#" + BarID);
+	if (Horizontal) {
+		BarElement.css({ width: HP + "%" });
+	} else {
+		BarElement.css({ height: HP + "%" });
+	}
+	BarElement.css("background-color", 55);
+	BarElement.attr("title", CurHP + "/" + MaxHP + " HP");
+	$(Container).find("#" + BarID + "bkg").attr("title", CurHP + "/" + MaxHP + " HP");
+};
+
+/* Health Bar code - End */</script><tw-tag name="widget" color="red"></tw-tag>,<tw-tag name="Инициализация" color="yellow"></tw-tag>,<tw-tag name="Интерфейс" color="red"></tw-tag>,<tw-tag name="Музыка" color="blue"></tw-tag><tw-passagedata pid="1" name="Начало" tags="" position="1800,200" size="100,100">&lt;&lt;nobr&gt;&gt;/* &lt;&lt;print Save.serialize()&gt;&gt; 
+
+&lt;label&gt;What is your name? &lt;&lt;textbox &quot;$name&quot; &quot;Frank&quot;&gt;&gt;&lt;/label&gt; */
+
+/* Для теста: */&lt;&lt;set $Inventory[1].name = &quot;Херня&quot;&gt;&gt;&lt;&lt;set $Inventory[1].type = &quot;Рубище&quot;&gt;&gt;&lt;&lt;set $Inventory[1].mass = 200&gt;&gt;&lt;&lt;set $Inventory[1].baffs_amount = $Inventory[1].arr_baffs.push( { baff_name: &quot;Спидозность&quot;, amount: -20 }, { baff_name: &quot;Убогость&quot;, amount: 228 } )&gt;&gt;
+
+/*&lt;&lt;set $CurHP = 10&gt;&gt;&lt;&lt;run Health($CurHP, $MaxHP, &quot;verticalhealthbar&quot;, false)&gt;&gt;
+
+&lt;img src=&quot;images\Без имени-1.png&quot; width=&quot;100%&quot;&gt;*/
+&lt;&lt;endnobr&gt;&gt;
+Утро.
+
+Во внешнем мире гремит общественный транспорт, дымят фабрики и устало бредут на работу в опостылевший офис люди. Они не поднимают головы, не смотрят на небо, мечтают лишь о том, чтобы этот день побыстрее закончился. Чтобы не выгнали с работы, чтобы не задержали зарплату. Ведь у всех есть своё жильё, своя квартира. Двенадцать квадратных метров — зато своя!
+
+Тут, конечно, выясняется, что жильё дало государство, но и тут есть нюанс: на двенадцати квадратах живётся на самом деле не так хорошо, как рассказывают. Зато это называют социальными гарантиями: у всех есть такая конура, у всех есть еда, хоть и третьесортная, у всех уже последние двести лет не меняющиеся однообразные тупые развлечения — фильмы, игры в виртуальной реальности. Только вот беда — в них нет сюжета в привычном понимании. Всё просто скопировано с некого шаблона, который за двести лет уже сто раз обветшал и потрескался, но пока работает, ведь никто не жалуется. За двести лет даже цель нажиться на потребителе выхолощена, как выхолощена и сама идея получения прибыли — в этом больше, по сути, нет смысла. Вот такой вот интересный капитализм без основополагающей цели капитализма.
+
+Прошло уже около трёхсот лет с момента изобретения полупроводниковых интегральных микросхем, но… видимо (по крайней мере, так говорят), это вершина технологий. Внешний мир добился в их усовершенствовании значительных успехов. Но, если честно, это сродни попыткам изготовления новой, эффективной и самой мощной паровой машины. Да, она получится красивой и самой лучшей среди всех паровых машин. Вот только даже не самый лучший ДВС её уделает по всем пунктам, кроме, разве что, простоты изготовления топлива. Зато успехами в области электроники гордятся. Уже триста лет.
+
+Общество разделено, можно сказать, на касты: основную массу (~99% населения), у которой есть всё для удовлетворения основных потребностей — подарок от государства. Но до карьерных высот член этой группы не доберётся, поскольку бесплатное образование длится всего четыре года, а далее цены такие, что никто его себе позволить не может. В дальнейшем можно получить кусочек среднего и высшего образования при устройстве на работу (и это если повезёт), но это будут сугубо узкоспециализированные знания, которые не расширят кругозор за пределами решения конкретного набора практических задач. Инженеру не надо знать, что экспонентой описывается множество природных процессов. Ему надо знать, что она есть в формуле, по которой можно сделать расчёт характеристик конкретного агрегата. Больше ему на работе ничего не понадобится, а значит, и учить его чему-то ещё бессмысленно.
+
+Оставшийся 1% — привилегированная элита. Ей доступно лучшее в мире образование, она занимает важные должности, где требуется самая высокая квалификация, она заведует государственной пропагандой.
+
+Страны не воюют между собой, но это временно. Все ресурсы тратятся на обеспечение 99% населения минимальным набором благ и на пропаганду, которая выставляет Таингию самым ужасным государством, против которого надо сплотиться. Это внешняя угроза. Мы должны все вместе, одним фронтом, единой связкой выступить против этих моральных уродов, зверей, трусов и коммуняк. Мы покажем вам подлинные документальные кадры бесчинств солдат Таингии во время ввода наших войск на территорию страны с целью её освобождения от незаконной тирании. У нас есть множество достоверных воспоминаний о том, что творилось в Таингии. Это ад на земле, это обречённое на восстание собственного населения государство. Да, некоторым из вас живётся несладко, но всё равно вы живёте несоизмеримо лучше, чем рабы коммунистической системы.
+
+Итак, утро.
+
+[[Далее|Версия элиты]]
+
+</tw-passagedata><tw-passagedata pid="2" name="StorySubtitle" tags="Интерфейс" position="3825,1050" size="100,100">v0.0.1-pre-alpha</tw-passagedata><tw-passagedata pid="3" name="StoryCaption" tags="Интерфейс" position="3825,1300" size="100,100">&lt;&lt;button &quot;Навыки и\nинвентарь&quot;&gt;&gt;&lt;&lt;script&gt;&gt;
+	Dialog.setup(&quot;Навыки и инвентарь&quot;);
+	Dialog.wiki(Story.get(&quot;Навыки и инвентарь&quot;).processText());
 	Dialog.open();
 	&lt;&lt;/script&gt;&gt;
 &lt;&lt;/button&gt;&gt;
 
-&lt;&lt;button &quot;Статы и инвентарь&quot;&gt;&gt;
-	&lt;&lt;script&gt;&gt;
-	Dialog.setup(&quot;Статы и инвентарь&quot;);
-	Dialog.wiki(Story.get(&quot;Статы и инвентарь&quot;).processText());
-	Dialog.open();
-	&lt;&lt;/script&gt;&gt;
-&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="StoryMenu" tags="Интерфейс" position="3600,1625" size="100,100">
-</tw-passagedata><tw-passagedata pid="6" name="Пауза" tags="Интерфейс" position="3600,1875" size="100,100">Вообще-то должна посередине выскакивать менюшка, которая будет довольно стандартной для любой игры: Продолжить, Настройки, Выйти и т.д. Потом допилю.
+&lt;&lt;nobr&gt;&gt;
+Громкость музыки:
+&lt;&lt;volume&gt;&gt;
+&lt;&lt;endnobr&gt;&gt;
 
-&lt;table&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;button&gt;САВЕС&lt;/button&gt;&lt;/td&gt;&lt;td&gt;&lt;button&gt;Настройки&lt;/button&gt;&lt;/td&gt;&lt;td&gt;&lt;button onclick=&quot;window.close()&quot;&gt;Выйти&lt;/button&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;
+&lt;&lt;nobr&gt;&gt;
+&lt;&lt;button &quot;Отключить индикаторы\nздоровья и оставшегося\nвремени&quot;&gt;&gt;&lt;&lt;run $(&quot;#verticalhealthbarbkg&quot;).toggle()&gt;&gt;&lt;&lt;set setup.HideHP = ($(&quot;#verticalhealthbarbkg&quot;).css(&quot;display&quot;) == &quot;none&quot;)&gt;&gt;
 
-&lt;button style=&quot;text-decoration: none; color: #ffffff;&quot; class=&quot;ui-close&quot;&gt;[[Выйти в главное меню|Главное меню]]&lt;/button&gt;
+&lt;&lt;run $(&quot;#verticalhealthbarbkg2&quot;).toggle()&gt;&gt;&lt;&lt;set setup.HideHP = ($(&quot;#verticalhealthbarbkg2&quot;).css(&quot;display&quot;) == &quot;none&quot;)&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;button class=&quot;ui-close&quot; style=&quot;color: #aaaaaa; font-size: 1.5em; float:right&quot;&gt;Закрыть&lt;/button&gt;
+&lt;div id=&quot;verticalhealthbarbkg&quot; class=&quot;vertbarbkg&quot;&gt;&lt;div id=&quot;verticalhealthbar&quot; class=&quot;vertbar&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;&lt;run Health($CurHP, $MaxHP, &quot;verticalhealthbar&quot;, false)&gt;&gt;
 
-&lt;nav id=&quot;menu&quot; role=&quot;navigation&quot;&gt;&lt;ul id=&quot;menu-story&quot;&gt;&lt;/ul&gt;&lt;ul id=&quot;menu-core&quot;&gt;&lt;li id=&quot;menu-item-saves&quot;&gt;&lt;a tabindex=&quot;0&quot;&gt;Saves&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;menu-item-settings&quot;&gt;&lt;a tabindex=&quot;0&quot;&gt;Settings&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;</tw-passagedata><tw-passagedata pid="7" name="StoryInit" tags="Инициализация" position="3800,1750" size="100,100">//музыка
+&lt;&lt;set $sum_time = ($Cur_day - 1) * (24*60*60) + $Time[0] * 60*60 + $Time[1]*60 + $Time[2]&gt;&gt;
+
+&lt;div id=&quot;verticalhealthbarbkg2&quot; class=&quot;vertbarbkg2&quot;&gt;&lt;div id=&quot;verticalhealthbar2&quot; class=&quot;vertbar2&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;&lt;run Health($sum_time, (24*60*60*3), &quot;verticalhealthbar2&quot;, false)&gt;&gt;
+&lt;&lt;endnobr&gt;&gt;
+</tw-passagedata><tw-passagedata pid="4" name="StoryMenu" tags="Интерфейс" position="3825,1175" size="100,100">
+</tw-passagedata><tw-passagedata pid="5" name="StoryInit" tags="Инициализация" position="3975,1300" size="100,100">//музыка
 
 &lt;&lt;cacheaudio &quot;morning_menu_bgm&quot; &quot;sounds/naruto - OPL3 MSX demo 1.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;day_menu_bgm&quot; &quot;sounds/naruto - OPL3 MSX demo 2.mp3&quot;&gt;&gt;
@@ -300,9 +656,9 @@ Setting.addList("textDelay", {
 //переменные и статы
 
 &lt;&lt;set $MaxHP = 100&gt;&gt; //здоровье
-&lt;&lt;set $CurHP = 100&gt;&gt;
+&lt;&lt;set $CurHP = 0&gt;&gt;
 &lt;&lt;set $MaxTireness = 100&gt;&gt; //усталость
-&lt;&lt;set $Tireness = 100&gt;&gt;
+&lt;&lt;set $Tireness = 0&gt;&gt;
 
 &lt;&lt;set $Strength = 0&gt;&gt; //сила
 &lt;&lt;set $Dexterity = 0&gt;&gt; //ловкость
@@ -331,8 +687,8 @@ Setting.addList("textDelay", {
 
 /* ---------------------------------------------------------- */
 
-&lt;&lt;set $Cur_day = 1&gt;&gt; //количество дней, прошедших с начала игры, и время (часы, минуты, секунды)
-&lt;&lt;set $Time = [7, 30, 0]&gt;&gt;
+&lt;&lt;set $Cur_day = 0&gt;&gt; //количество дней, прошедших с начала игры, и время (часы, минуты, секунды)
+&lt;&lt;set $Time = [0, 0, 0]&gt;&gt;
 
 &lt;&lt;set $Weather = &quot;ясно&quot;&gt;&gt; //погода
 &lt;&lt;set $Temperature = 25&gt;&gt; //текущая температура, меняется от локации к локации
@@ -350,14 +706,28 @@ Setting.addList("textDelay", {
 &lt;&lt;script&gt;&gt;
 	Config.history.maxStates = 0;
 	Config.macros.maxLoopIterations = 9999999999;
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Статы и инвентарь" tags="Интерфейс" position="3600,2000" size="100,100">&lt;h2&gt;Статы&lt;/h2&gt;
-(Тут нада сунуть основные статы — здоровье, усталость и т.д.)
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Навыки и инвентарь" tags="Интерфейс" position="3825,1425" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;h3&gt;Здоровье&lt;/h3&gt;
+&lt;div id=&quot;hzhealthbarbkg&quot; class=&quot;hzbarbkg&quot;&gt;&lt;div id=&quot;hzhealthbar&quot; class=&quot;hzbar&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;&lt;script&gt;&gt;$(document).one(&#39;:passagedisplay&#39;, function (ev) {
+	Health(State.variables.CurHP, State.variables.MaxHP, &quot;hzhealthbar&quot;, true, ev.content);
+});&lt;&lt;/script&gt;&gt;
 
+&lt;h3&gt;Усталость&lt;/h3&gt;
+&lt;div id=&quot;hzhealthbarbkg&quot; class=&quot;hzbarbkg&quot;&gt;&lt;div id=&quot;hzhealthbr&quot; class=&quot;hzbar&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;&lt;script&gt;&gt;$(document).one(&#39;:passagedisplay&#39;, function (ev) {
+	Health(State.variables.Tireness, State.variables.MaxTireness, &quot;hzhealthbr&quot;, true, ev.content);
+});&lt;&lt;/script&gt;&gt;
+
+&lt;&lt;script&gt;&gt;
+setTimeout(function(ev) {
+	Wikifier.wikifyEval(&#39;&lt;&lt;run Health2($CurHP, $MaxHP, &quot;hzhealthbar&quot;, true)&gt;&gt;&lt;&lt;run Health2($Tireness, $MaxTireness, &quot;hzhealthbr&quot;, true)&gt;&gt;&#39;);
+}, 50);
+&lt;&lt;/script&gt;&gt;&lt;&lt;endnobr&gt;&gt;
+
+&lt;h2&gt;Навыки&lt;/h2&gt;
 &lt;table class=&quot;menu&quot;&gt;
 &lt;tr&gt;
-
 /*&lt;&lt;HoverTxtTxt 200 &quot;&lt;td&gt;Сила&lt;&lt;for _i = 0; _i lt $Strength; _i++&gt;&gt;&lt;&lt;print &quot;●&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;for _i = 10; _i gt $Strength; _i--&gt;&gt;&lt;&lt;print &quot;○&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;/td&gt;&quot; &quot;Насколько мощно можешь уебать&quot;&gt;&gt;*/
-
 &lt;td&gt;Сила
 &lt;&lt;for _i = 0; _i lt $Strength; _i++&gt;&gt;&lt;&lt;print &quot;●&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;for _i = 10; _i gt $Strength; _i--&gt;&gt;&lt;&lt;print &quot;○&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;/td&gt;
 &lt;td&gt;Ловкость
@@ -428,25 +798,1212 @@ Setting.addList("textDelay", {
 &lt;td&gt;Хитрость
 &lt;&lt;for _i = 0; _i lt $Trickery; _i++&gt;&gt;&lt;&lt;print &quot;●&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;for _i = 10; _i gt $Trickery; _i--&gt;&gt;&lt;&lt;print &quot;○&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;/table&gt;/* Для теста: */&lt;&lt;set $Inventory[1].name = &quot;Херня&quot;&gt;&gt;&lt;&lt;set $Inventory[1].type = &quot;Рубище&quot;&gt;&gt;&lt;&lt;set $Inventory[1].mass = 200&gt;&gt;&lt;&lt;set $Inventory[1].baffs_amount = $Inventory[1].arr_baffs.push( { baff_name: &quot;Спидозность&quot;, amount: -20 }, { baff_name: &quot;Убогость&quot;, amount: 228 } )&gt;&gt;
+&lt;/table&gt;&lt;&lt;nobr&gt;&gt;
 &lt;h2&gt;Инвентарь&lt;/h2&gt;
 &lt;table class=&quot;menu&quot;&gt;
-&lt;&lt;for _i = 0; _i &lt;= 4; _i++&gt;&gt;&lt;tr&gt;&lt;&lt;for _j = 1; _j &lt;= 5; _j++&gt;&gt;&lt;td&gt;&lt;&lt;set $adr = &quot;images/&quot; + $Inventory[5 * _i + _j].name + &quot;.png&quot;&gt;&gt;&lt;&lt;set $string = &quot;&lt;div style=\&quot;font-size: 150%; font-weight: bold; color: #fff; padding: 0; margin: 0\&quot;&gt;&quot; + $Inventory[5 * _i + _j].name + &quot;&lt;/div&gt;\n&quot; + &quot;&#39;&#39;Тип:&#39;&#39; &quot; + $Inventory[5 * _i + _j].type + &quot;\n&#39;&#39;Масса:&#39;&#39; &quot; + $Inventory[5 * _i + _j].mass + &quot;\n&#39;&#39;Объём:&#39;&#39; &quot; + $Inventory[5 * _i + _j].volume + &quot;\n&#39;&#39;Прочность:&#39;&#39; &quot; + $Inventory[5 * _i + _j].durability + &quot;/&quot; + $Inventory[5 * _i + _j].max_durability&gt;&gt;&lt;&lt;if $Inventory[5 * _i + _j].baffs_amount &gt; 0&gt;&gt;&lt;&lt;set $string += &quot;\n\n&#39;&#39;Эффекты:&#39;&#39;\n&quot;&gt;&gt;&lt;&lt;for _k = 0; _k &lt; $Inventory[5 * _i + _j].baffs_amount; _k++&gt;&gt;&lt;&lt;set $string += $Inventory[5 * _i + _j].arr_baffs[_k].baff_name + &quot;: &quot;&gt;&gt;&lt;&lt;if $Inventory[5 * _i + _j].arr_baffs[_k].amount &gt; 0&gt;&gt;&lt;&lt;set $string += &quot;+&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $string += &quot;−&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;set $string += Math.abs($Inventory[5 * _i + _j].arr_baffs[_k].amount) + &quot;\n&quot;&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;HoverTxt 200 $adr $string&gt;&gt;&lt;/td&gt;&lt;&lt;/for&gt;&gt;&lt;/tr&gt;&lt;&lt;/for&gt;&gt;
+&lt;&lt;for _i = 0; _i &lt;= 4; _i++&gt;&gt;
+&lt;tr&gt;
+	&lt;&lt;for _j = 1; _j &lt;= 5; _j++&gt;&gt;
+		&lt;td&gt;
+			&lt;&lt;set $adr = &quot;images/&quot; + $Inventory[5 * _i + _j].name + &quot;.png&quot;&gt;&gt;
+			&lt;&lt;set $string = &quot;&lt;div style=\&quot;font-size: 150%; font-weight: bold; color: #fff; padding: 0; margin: 0\&quot;&gt;&quot; + $Inventory[5 * _i + _j].name + &quot;&lt;/div&gt;\n&quot; + &quot;&#39;&#39;Тип:&#39;&#39; &quot; + $Inventory[5 * _i + _j].type + &quot;\n&#39;&#39;Масса:&#39;&#39; &quot; + $Inventory[5 * _i + _j].mass + &quot;\n&#39;&#39;Объём:&#39;&#39; &quot; + $Inventory[5 * _i + _j].volume + &quot;\n&#39;&#39;Прочность:&#39;&#39; &quot; + $Inventory[5 * _i + _j].durability + &quot;/&quot; + $Inventory[5 * _i + _j].max_durability&gt;&gt;
+			&lt;&lt;if $Inventory[5 * _i + _j].baffs_amount &gt; 0&gt;&gt;
+				&lt;&lt;set $string += &quot;\n\n&#39;&#39;Эффекты:&#39;&#39;\n&quot;&gt;&gt;
+				&lt;&lt;for _k = 0; _k &lt; $Inventory[5 * _i + _j].baffs_amount; _k++&gt;&gt;
+					&lt;&lt;set $string += $Inventory[5 * _i + _j].arr_baffs[_k].baff_name + &quot;: &quot;&gt;&gt;
+					&lt;&lt;if $Inventory[5 * _i + _j].arr_baffs[_k].amount &gt; 0&gt;&gt;
+						&lt;&lt;set $string += &quot;+&quot;&gt;&gt;
+					&lt;&lt;else&gt;&gt;
+						&lt;&lt;set $string += &quot;−&quot;&gt;&gt;
+					&lt;&lt;/if&gt;&gt;
+					&lt;&lt;set $string += Math.abs($Inventory[5 * _i + _j].arr_baffs[_k].amount) + &quot;\n&quot;&gt;&gt;
+				&lt;&lt;/for&gt;&gt;
+			&lt;&lt;/if&gt;&gt;
+			
+		&lt;&lt;if $adr eq &quot;images/.png&quot;&gt;&gt;
+			&lt;&lt;HoverTxt 200 &quot;images/placeholder.png&quot; $string&gt;&gt;
+		&lt;&lt;else&gt;&gt;
+			&lt;&lt;HoverTxt 200 $adr $string&gt;&gt;
+		&lt;&lt;/if&gt;&gt;
+		&lt;/td&gt;
+	&lt;&lt;/for&gt;&gt;
+&lt;/tr&gt;
+&lt;&lt;/for&gt;&gt;
 &lt;/table&gt;
+&lt;&lt;endnobr&gt;&gt;
 
 &lt;button class=&quot;ui-close&quot; style=&quot;font-size: 1.5em; float:right&quot;&gt;Закрыть&lt;/button&gt;
-&lt;pre&gt; &lt;/pre&gt;</tw-passagedata><tw-passagedata pid="9" name="Генерёжка" tags="" position="3400,1550" size="100,100">&lt;&lt;audio $Cur_audio volume $audio_vol fadeoverto 2 0.0&gt;&gt;&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;audio &quot;ruins_bgm_2&quot; play volume 0.0&gt;&gt;&lt;&lt;set $Cur_audio = &quot;ruins_bgm_2&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.1&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.16&gt;&gt;&lt;&lt;script&gt;&gt;
+&lt;pre&gt; &lt;/pre&gt;</tw-passagedata><tw-passagedata pid="7" name="Генерёжка" tags="" position="3450,1300" size="100,100">&lt;&lt;audio $Cur_audio volume $audio_vol fadeoverto 2 0.0&gt;&gt;
+Перед началом игры необходимо выбрать навыки персонажа. Ваш выбор повлияет на дальнейшие события в игре. Персонаж не сможет выполнить определённые действия, если у него будет низкий навык, соответствующий этому действию.
+
+Выбирайте навыки внимательно. Минимум на навыки необходимо потратить 24 очка.
+
+&lt;span id=&quot;counter_span&quot;&gt;Осталось очков: 90.&lt;/span&gt; &lt;span id=&quot;warn_span&quot; style=&quot;font-size: 2em; color: #ff4444&quot;&gt;&lt;/span&gt;
+
+&lt;&lt;button &quot;Случайные навыки&quot;&gt;&gt;
+	&lt;&lt;set $flag = 0&gt;&gt;&lt;&lt;for $flag lt 1&gt;&gt;&lt;&lt;set $Strength = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Dexterity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Empathy = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Persuasion = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Computer_knowledge = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Intimidation = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Larceny = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Stealth = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Firearms = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Socialize = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Drive = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Medical_treatment = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Survival = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Streetwise = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Attention = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Will = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Charisma = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Fight_dexterity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Craft = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Politics_knowledge = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Creativity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Memory = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Science = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Trickery = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;if 90 eq $Strength + $Dexterity + $Empathy + $Persuasion + $Computer_knowledge + $Intimidation + $Larceny + $Stealth + $Firearms + $Socialize + $Drive + $Medical_treatment + $Survival + $Streetwise + $Attention + $Will + $Charisma + $Fight_dexterity + $Craft + $Politics_knowledge + $Creativity + $Memory + $Science + $Trickery&gt;&gt;&lt;&lt;set $flag = 33&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
+	
+	
+	&lt;&lt;script&gt;&gt;$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+					
+	$(&#39;#warn_span&#39;).text(&quot;&quot;);
+	
+		var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			var overall_sum = 90;
+			
+			$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+			
+	$(function() {
+
+	
+			$(&quot;#demo1 .ratyli&quot;).ratyli({rate:sv.Strength});
+			$(&quot;#demo2 .ratyli&quot;).ratyli({rate:sv.Dexterity});
+			$(&quot;#demo3 .ratyli&quot;).ratyli({rate:sv.Empathy});
+			$(&quot;#demo4 .ratyli&quot;).ratyli({rate:sv.Persuasion});
+			$(&quot;#demo5 .ratyli&quot;).ratyli({rate:sv.Computer_knowledge});
+			$(&quot;#demo6 .ratyli&quot;).ratyli({rate:sv.Intimidation});
+			$(&quot;#demo7 .ratyli&quot;).ratyli({rate:sv.Larceny});
+			$(&quot;#demo8 .ratyli&quot;).ratyli({rate:sv.Stealth});
+			$(&quot;#demo9 .ratyli&quot;).ratyli({rate:sv.Firearms});
+			$(&quot;#demo10 .ratyli&quot;).ratyli({rate:sv.Socialize});
+			$(&quot;#demo11 .ratyli&quot;).ratyli({rate:sv.Drive});
+			$(&quot;#demo12 .ratyli&quot;).ratyli({rate:sv.Medical_treatment});
+			$(&quot;#demo13 .ratyli&quot;).ratyli({rate:sv.Survival});
+			$(&quot;#demo14 .ratyli&quot;).ratyli({rate:sv.Streetwise});
+			$(&quot;#demo15 .ratyli&quot;).ratyli({rate:sv.Attention});
+			$(&quot;#demo16 .ratyli&quot;).ratyli({rate:sv.Will});
+			$(&quot;#demo17 .ratyli&quot;).ratyli({rate:sv.Charisma});
+			$(&quot;#demo18 .ratyli&quot;).ratyli({rate:sv.Fight_dexterity});
+			$(&quot;#demo19 .ratyli&quot;).ratyli({rate:sv.Craft});
+			$(&quot;#demo20 .ratyli&quot;).ratyli({rate:sv.Politics_knowledge});
+			$(&quot;#demo21 .ratyli&quot;).ratyli({rate:sv.Creativity});
+			$(&quot;#demo22 .ratyli&quot;).ratyli({rate:sv.Memory});
+			$(&quot;#demo23 .ratyli&quot;).ratyli({rate:sv.Science});
+			$(&quot;#demo24 .ratyli&quot;).ratyli({rate:sv.Trickery});
+			
+		});
+	&lt;&lt;/script&gt;&gt;
+	
+	
+&lt;&lt;/button&gt;&gt; &lt;&lt;button &quot;Сбросить&quot;&gt;&gt;
+	
+	&lt;&lt;set $Strength = 0&gt;&gt;
+	&lt;&lt;set $Dexterity = 0&gt;&gt;
+	&lt;&lt;set $Empathy = 0&gt;&gt;
+	&lt;&lt;set $Persuasion = 0&gt;&gt;
+	&lt;&lt;set $Computer_knowledge = 0&gt;&gt;
+	&lt;&lt;set $Intimidation = 0&gt;&gt;
+	&lt;&lt;set $Larceny = 0&gt;&gt;
+	&lt;&lt;set $Stealth = 0&gt;&gt;
+	&lt;&lt;set $Firearms = 0&gt;&gt;
+	&lt;&lt;set $Socialize = 0&gt;&gt;
+	&lt;&lt;set $Drive = 0&gt;&gt;
+	&lt;&lt;set $Medical_treatment = 0&gt;&gt;
+	&lt;&lt;set $Survival = 0&gt;&gt;
+	&lt;&lt;set $Streetwise = 0&gt;&gt;
+	&lt;&lt;set $Attention = 0&gt;&gt;
+	&lt;&lt;set $Will = 0&gt;&gt;
+	&lt;&lt;set $Charisma = 0&gt;&gt;
+	&lt;&lt;set $Fight_dexterity = 0&gt;&gt;
+	&lt;&lt;set $Craft = 0&gt;&gt;
+	&lt;&lt;set $Politics_knowledge = 0&gt;&gt;
+	&lt;&lt;set $Creativity = 0&gt;&gt;
+	&lt;&lt;set $Memory = 0&gt;&gt;
+	&lt;&lt;set $Science = 0&gt;&gt;
+	&lt;&lt;set $Trickery = 0&gt;&gt;
+	
+	&lt;&lt;script&gt;&gt;
+	$(&#39;#counter_span&#39;).text(&quot;Осталось очков: 90.&quot;);
+	$(&#39;#warn_span&#39;).text(&quot;&quot;);
+	
+	var sv = State.variables;
+	
+	$(function() {
+			
+			state.display(state.active.title, null, &quot;back&quot;);
+
+		});
+	
+	$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;none&#39;,
+						  
+					});
+	
+	&lt;&lt;/script&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;&lt;nobr&gt;&gt;
+&lt;div id=&quot;demo1&quot; class=&quot;demo&quot;&gt;
+Сила: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo2&quot; class=&quot;demo&quot;&gt;
+Ловкость: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo3&quot; class=&quot;demo&quot;&gt;
+Сочувствие: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo4&quot; class=&quot;demo&quot;&gt;
+Убеждение: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo5&quot; class=&quot;demo&quot;&gt;
+Работа с компьютером: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo6&quot; class=&quot;demo&quot;&gt;
+Устрашение: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo7&quot; class=&quot;demo&quot;&gt;
+Воровство: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo8&quot; class=&quot;demo&quot;&gt;
+Скрытность: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo9&quot; class=&quot;demo&quot;&gt;
+Огнестрел: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo10&quot; class=&quot;demo&quot;&gt;
+Соц. навыки: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo11&quot; class=&quot;demo&quot;&gt;
+Вождение: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo12&quot; class=&quot;demo&quot;&gt;
+Лечение: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo13&quot; class=&quot;demo&quot;&gt;
+Выживание: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo14&quot; class=&quot;demo&quot;&gt;
+Уличные нравы: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo15&quot; class=&quot;demo&quot;&gt;
+Внимательность: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo16&quot; class=&quot;demo&quot;&gt;
+Воля: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo17&quot; class=&quot;demo&quot;&gt;
+Харизма: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo18&quot; class=&quot;demo&quot;&gt;
+Рукопашный бой: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo19&quot; class=&quot;demo&quot;&gt;
+«Своими руками»: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo20&quot; class=&quot;demo&quot;&gt;
+Понимание политики: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo21&quot; class=&quot;demo&quot;&gt;
+Творчество: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo22&quot; class=&quot;demo&quot;&gt;
+Память: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo23&quot; class=&quot;demo&quot;&gt;
+Научные знания: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo24&quot; class=&quot;demo&quot;&gt;
+Хитрость: &lt;span class=&quot;ratyli&quot; data-full=&quot;●&quot; data-empty=&quot;○&quot; style=&quot;font-size: 2em;&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;&lt;endnobr&gt;&gt;
+
+&lt;span class=&quot;button_span&quot; style=&quot;display: none;&quot;&gt;&lt;&lt;button [[Начать игру|Начало]]&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/span&gt;
+
+&lt;&lt;script&gt;&gt;
+
+var delayInMilliseconds = 2000; //2 seconds
+
+setTimeout(function() {
+  Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;&quot;&gt;&gt;/*&lt;&lt;audio &quot;ruins_bgm_2&quot; play volume 0.0&gt;&gt;&lt;&lt;set $Cur_audio = &quot;ruins_bgm_2&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.1&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.16&gt;&gt;*/&#39;);
+}, delayInMilliseconds);
+
 UIBar.unstow(true);
 
-document.body.style.background = &quot;&quot;;
-&lt;&lt;/script&gt;&gt;Сгенерим перса. Пока только случайная генерация.
-&lt;&lt;set $flag = 0&gt;&gt;&lt;&lt;for $flag lt 1&gt;&gt;&lt;&lt;set $Strength = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Dexterity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Empathy = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Persuasion = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Computer_knowledge = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Intimidation = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Larceny = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Stealth = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Firearms = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Socialize = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Drive = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Medical_treatment = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Survival = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Streetwise = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Attention = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Will = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Charisma = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Fight_dexterity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Craft = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Politics_knowledge = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Creativity = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Memory = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Science = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;set $Trickery = Math.floor(Math.random()*10) + 1&gt;&gt;&lt;&lt;if 120.5 gt $Strength + $Dexterity + $Empathy + $Persuasion + $Computer_knowledge + $Intimidation + $Larceny + $Stealth + $Firearms + $Socialize + $Drive + $Medical_treatment + $Survival + $Streetwise + $Attention + $Will + $Charisma + $Fight_dexterity + $Craft + $Politics_knowledge + $Creativity + $Memory + $Science + $Trickery&gt;&gt;&lt;&lt;set $flag = 33&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
+document.body.style.background = &quot;&quot;; 
 
-[[Поехали дальше|Начало]].</tw-passagedata><tw-passagedata pid="10" name="Главное меню" tags="" position="3550,1250" size="200,200">&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;script&gt;&gt;
+
+
+! function (a) {
+    a.ratyli = function (b, c) {
+        var d = this;
+        d.$el = a(b), d.el = b, d.$el.data(&quot;ratyli&quot;, d), d.init = function () {
+            d.options = a.extend({}, a.ratyli.defaultOptions, c), d.options = a.extend({}, d.options, d.$el.data()), d.set(d.options.rate, !0), d.$el.on(&quot;click&quot;, &quot;&gt; *&quot;, function (b) {
+                if (!d.options.disable) {
+                    var c = b.target;
+                    &quot;SPAN&quot; != c.tagName &amp;&amp; (c = c.parentNode), d.options.onSignClick.call(d, c);
+                    var e = a(c).prevAll().length + 1;
+                    d.set(e)
+                }
+            }), d.$el.on(&quot;mouseenter&quot;, &quot;&gt; *&quot;, function (b) {
+                var c = b.target;
+                &quot;SPAN&quot; != c.tagName &amp;&amp; (c = c.parentNode), d.options.disable || (a(c).addClass(&quot;rate-active&quot;), a(c).prevAll().addClass(&quot;rate-active&quot;)), d.options.onSignEnter.apply(null, [d.options.rate, c])
+            }), d.$el.on(&quot;mouseleave&quot;, &quot;&gt; *&quot;, function (b) {
+                var c = b.target;
+                &quot;SPAN&quot; != c.tagName &amp;&amp; (c = c.parentNode), d.options.disable || (a(c).removeClass(&quot;rate-active&quot;), a(c).prevAll().removeClass(&quot;rate-active&quot;)), d.options.onSignLeave.apply(null, [d.options.rate, c])
+            })
+        }, d.set = function (a, b) {
+            (0 &gt; a || a % 1 != 0 || a &gt; d.options.ratemax) &amp;&amp; (a = 0), 1 != a || 1 != d.options.rate || 1 != d.options.unrateable || b || (a = 0), d.options.rate = a, d.$el.html(&quot;&quot;), 0 != d.options.rate &amp;&amp; d.$el.attr(&quot;data-rate&quot;, d.options.rate), d.$el.attr(&quot;data-ratemax&quot;, d.options.ratemax);
+            for (var c = 0; c &lt; d.options.ratemax;) {
+                var e = &quot;&quot;;
+                e = c &lt; d.options.rate ? d.signTemplate(&quot;full&quot;) : d.signTemplate(&quot;empty&quot;), d.$el.append(e), c++
+            }
+            return b || d.options.disable || (d.$el.addClass(&quot;rated&quot;), d.$el.attr(&quot;data-rate&quot;, a)), d.options.onRated.call(d, a, b), d.options.rate
+        }, d.signTemplate = function (a) {
+            return &quot;&lt;span class=&#39;rate rate-&quot; + a + &quot;&#39; style=&#39;cursor:&quot; + d.options.cursor + &quot;;&#39;&gt;&quot; + d.options[a] + &quot;&lt;/span&gt;&quot;
+        }, d.init()
+    }, a.ratyli.defaultOptions = {
+        disable: !1,
+        unrateable: !1,
+        full: &quot;★&quot;,
+        empty: &quot;☆&quot;,
+        cursor: &quot;default&quot;,
+        rate: 0,
+        ratemax: 10,
+        onSignEnter: function () {},
+        onSignLeave: function () {},
+        onSignClick: function () {},
+        onRated: function () {}
+    }, a.fn.ratyli = function (b) {
+        return this.each(function () {
+            new a.ratyli(this, b)
+        })
+    }
+}(jQuery);
+
+
+$(function() {
+
+	var overall_sum = 90;
+	
+	var flagg = 0;
+
+	$(&quot;#demo1 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			
+			
+			
+			if(!init &amp;&amp; sum - sv.Strength + value &lt; overall_sum) 
+			{
+				sv.Strength = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Strength + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Strength - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo2 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Dexterity + value &lt; overall_sum) 
+			{
+				sv.Dexterity = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Dexterity + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Dexterity - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo3 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Empathy + value &lt; overall_sum) 
+			{
+				sv.Empathy = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Empathy + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Empathy - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo4 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Persuasion + value &lt; overall_sum) 
+			{
+				sv.Persuasion = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Persuasion + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Persuasion - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo5 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Computer_knowledge + value &lt; overall_sum) 
+			{
+				sv.Computer_knowledge = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Computer_knowledge + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Computer_knowledge - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo6 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Intimidation + value &lt; overall_sum) 
+			{
+				sv.Intimidation = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Intimidation + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Intimidation - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo7 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Larceny + value &lt; overall_sum) 
+			{
+				sv.Larceny = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Larceny + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Larceny - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo8 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Stealth + value &lt; overall_sum) 
+			{
+				sv.Stealth = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Stealth + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Stealth - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo9 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Firearms + value &lt; overall_sum) 
+			{
+				sv.Firearms = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Firearms + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Firearms - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo10 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Socialize + value &lt; overall_sum) 
+			{
+				sv.Socialize = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Socialize + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Socialize - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo11 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Drive + value &lt; overall_sum) 
+			{
+				sv.Drive = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Drive + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Drive - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo12 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Medical_treatment + value &lt; overall_sum) 
+			{
+				sv.Medical_treatment = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Medical_treatment + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Medical_treatment - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo13 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Survival + value &lt; overall_sum) 
+			{
+				sv.Survival = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Survival + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Survival - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo14 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Streetwise + value &lt; overall_sum) 
+			{
+				sv.Streetwise = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Streetwise + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Streetwise - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo15 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Attention + value &lt; overall_sum) 
+			{
+				sv.Attention = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Attention + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Attention - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo16 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Will + value &lt; overall_sum) 
+			{
+				sv.Will = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Will + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Will - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo17 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Charisma + value &lt; overall_sum) 
+			{
+				sv.Charisma = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Charisma + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Charisma - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo18 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Fight_dexterity + value &lt; overall_sum) 
+			{
+				sv.Fight_dexterity = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Fight_dexterity + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Fight_dexterity - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo19 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Craft + value &lt; overall_sum) 
+			{
+				sv.Craft = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Craft + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Craft - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo20 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Politics_knowledge + value &lt; overall_sum) 
+			{
+				sv.Politics_knowledge = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Politics_knowledge + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Politics_knowledge - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo21 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Creativity + value &lt; overall_sum) 
+			{
+				sv.Creativity = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Creativity + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Creativity - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo22 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Memory + value &lt; overall_sum) 
+			{
+				sv.Memory = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Memory + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Memory - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo23 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Science + value &lt; overall_sum) 
+			{
+				sv.Science = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Science + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Science - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+	
+	$(&quot;#demo24 .ratyli&quot;).ratyli({
+		unrateable:true,
+		onRated:function(value,init){
+			// rating callback
+			
+			var sv = State.variables;
+			
+			var sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+			
+			if(!init &amp;&amp; sum - sv.Trickery + value &lt; overall_sum) 
+			{
+				sv.Trickery = value;
+				
+				if (sum &gt; 24 &amp;&amp; flagg == 0)
+				{ 
+					flagg = 1; 
+
+					$(&quot;.button_span&quot;).css({
+						  &#39;display&#39;:&#39;block&#39;,
+						  &#39;width&#39;:&#39;100px&#39;,
+						  &#39;height&#39;:&#39;100px&#39;
+					});
+				}
+				
+				sum = sv.Strength + sv.Dexterity + sv.Empathy + sv.Persuasion + sv.Computer_knowledge + sv.Intimidation + sv.Larceny + sv.Stealth + sv.Firearms + sv.Socialize + sv.Drive + sv.Medical_treatment + sv.Survival + sv.Streetwise + sv.Attention + sv.Will + sv.Charisma + sv.Fight_dexterity + sv.Craft + sv.Politics_knowledge + sv.Creativity + sv.Memory + sv.Science + sv.Trickery;
+				
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum) + &quot;.&quot;);
+$(&#39;#warn_span&#39;).text(&quot;&quot;);
+			}
+			
+			if(!init &amp;&amp; sum - sv.Trickery + value &gt;= overall_sum)
+			{
+				$(&#39;#counter_span&#39;).text(&quot;Осталось очков: &quot; + (overall_sum - sum + sv.Trickery - value) + &quot;.&quot;);
+				$(&#39;#warn_span&#39;).text(&quot;Вы потратили все очки и не можете увеличить этот навык. Попробуйте уменьшить другие навыки, если вы действительно хотите увеличить текущий навык.&quot;);
+			}
+		},
+	});
+});
+
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Главное меню" tags="Музыка" position="3550,1250" size="200,200">&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;script&gt;&gt;
 UIBar.stow(true);
 
 document.body.style.backgroundSize = &quot;cover&quot;;
-
 if(Math.random() &lt; 0.9)
 {
 	var date = new Date();
@@ -498,9 +2055,14 @@ if(Math.random() &lt; 0.9)
 	}
 
 &lt;&lt;/script&gt;&gt;
-[[Генерёжка]] изменение
 
-&lt;&lt;HoverTxtTxt 200 &quot;fff&quot; &quot;dfgjsedgh&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Меню, которое появляется при наведении курсора на предмет в инвентаре" tags="widget nobr" position="3600,2125" size="100,100">/*  HoverTxt : Show notepad icon shows some wikified text in a window of width X pixels above an icon when it&#39;s hovered over.  */
+&lt;div style=&quot;width:15%;height:10%; position:absolute;z-index:10; top:80%;left:5%;font-size: 3em;&quot;&gt; &lt;&lt;button &quot;Начать&quot; &quot;Генерёжка&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; 
+&lt;/div&gt;
+
+&lt;div style=&quot;width:10%;height:7%; position:absolute;z-index:11; top:90%;left:5%;font-size: 1em;&quot;&gt; &lt;&lt;button &quot;Авторство работ&quot; &quot;Авторство&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; 
+&lt;/div&gt;
+
+/* &lt;&lt;HoverTxtTxt 200 &quot;fff&quot; &quot;dfgjsedgh&quot;&gt;&gt; */</tw-passagedata><tw-passagedata pid="9" name="Меню, которое появляется при наведении курсора на предмет в инвентаре" tags="widget nobr" position="3825,1550" size="100,100">/*  HoverTxt : Show notepad icon shows some wikified text in a window of width X pixels above an icon when it&#39;s hovered over.  */
 /*  EXAMPLE: &lt;&lt;HoverTxt 200 &quot;images/shit_in_4k.png&quot; &quot;dat is shit in ultra hd lol&quot;&gt;&gt;  */
 /*  EXAMPLE: &lt;&lt;HoverTxt 300 &quot;images/shit_in_4k.png&quot; &#96;someFunction()&#96;&gt;&gt;  */
 &lt;&lt;widget &quot;HoverTxt&quot;&gt;&gt;
@@ -542,7 +2104,317 @@ if(Math.random() &lt; 0.9)
 			&lt;&lt;print $args[2]&gt;&gt;
 		&lt;/span&gt;
 	&lt;/a&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata></tw-storydata>
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="Авторство" tags="Музыка" position="3600,900" size="100,100">&lt;&lt;script&gt;&gt;document.body.style.background = &quot;&quot;;
+
+var delayInMilliseconds = 2000; //2 seconds
+
+setTimeout(function() {
+  Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;credits_bgm&quot;&gt;&gt;&lt;&lt;audio &quot;credits_bgm&quot; play loop volume 0.0&gt;&gt;&lt;&lt;set $Cur_audio = &quot;credits_bgm&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.1&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.1&gt;&gt;*/&#39;);
+}, delayInMilliseconds);
+
+&lt;&lt;/script&gt;&gt;&lt;&lt;audio $Cur_audio volume $audio_vol fadeoverto 2 0.0&gt;&gt;Данная игра использует музыку и изображения, которые сделаны третьими лицами и которые не принадлежат автору, за исключением отдельных изображений, о которых будет сказано ниже.
+
+Не забывайте о том, что музыка и изображения более не являются искусством, поскольку они находятся в игре.
+
+Музыка:
+
+&lt;hr&gt;
+
+Автор: [[naruto|https://soundcloud.com/naruto2413/moondriver-for-opl3-demo-001-004]]
+
+OPL3 MSX demo 1
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/naruto - OPL3 MSX demo 1.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+OPL3 MSX demo 2
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/naruto - OPL3 MSX demo 2.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+OPL3 MSX demo 3
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/naruto - OPL3 MSX demo 3.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+OPL3 MSX demo 4
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/naruto - OPL3 MSX demo 4.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+MoonDriver Demo (MSX2+) Encounter the Unknown Environment [OPL4]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/naruto - MoonDriver Demo (MSX2+) Encounter the Unknown Environment [OPL4].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: [[Shogoon|https://csdb.dk/scener/?id=8127]]
+
+Do Nothing for 3 Minutes [C64 3SID] (вторая часть вырезана)
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Shogoon - Do Nothing for 3 Minutes [C64 3SID].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+Raindropsies [C64]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Shogoon - Raindropsies [C64].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: [[Stinsen|https://csdb.dk/scener/?id=23584]]
+
+Guilty Pleasures [C64 2SID]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Stinsen - Guilty Pleasures [C64 2SID].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+Double Rainbow [C64]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Stinsen - Double Rainbow [C64].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: [[Linus Åkesson|https://www.linusakesson.net/music/chipmusic.php]]
+
+Parallelogram [Custom 16-ch 4-op FM synth]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Linus Akesson - Parallelogram.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+Lunatico [C64] (2 отрывка)
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Linus Akesson - Lunatico [C64] excerpt 1.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Linus Akesson - Lunatico [C64] excerpt 2.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+Lunatico Note [C64]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Linus Akesson - Lunatico Note [C64].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор оригинала: From the Sorcerian soundtrack by Falcom, 1987.
+Автор кавера: [[John Hassink|https://www.msx.org/wiki/Category:John_Hassink]]
+
+Sorcerian - The stolen scepter (OPL4 cover)
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/John Hassink - Sorcerian - The stolen scepter OPL4 cover.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: [[zircon|https://www.youtube.com/watch?v=1nK-zuJrccg]]
+
+megasid 2066 [C64 25SID]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/zircon - megasid 2066 [C64 25SID].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: REALITY
+
+HUBBARD.RAD (Reality Adlib Tracker)
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/HUBBARD.RAD - Reality Adlib Tracker.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: [[encore|http://www.adlibtracker.net/contactlinks.php]]
+
+What is Love [OPL3]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Encore - What is Love [OPL3].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: [[Fearofdark|https://fearofdark.bandcamp.com/]]
+
+Don&#39;t Leave Me Out Here in the Dark
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Fearofdark - Don&#39;t Leave Me Out Here in the Dark.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: [[Nightbeat|https://modarchive.org/index.php?request=view_profile&amp;query=69007]]
+
+Miriel
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Nightbeat - Miriel.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор оригинала: [[RigidatoMS|https://www.youtube.com/watch?v=zR-Qr6fnhoc]]
+Автор кавера: [[SuperJet Spade|https://www.youtube.com/watch?v=dMyCtuZ_9Ug]]
+
+Hard Transition (OPL3 cover)
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Hard Transition (original by RigidatoMS, OPL3 cover by SuperJet Spade).mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Автор: [[Jeroen Tel|https://modarchive.org/index.php?request=view_profile&amp;query=83766]]
+
+Stranglehold [XM]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Jeroen Tel - Stranglehold [XM].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+Stranglehold II: Letting Go [XM]
+&lt;audio controls&gt;
+  &lt;source src=&quot;sounds/Jeroen Tel - Stranglehold II Letting Go [XM].mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Браузер не поддерживает проигрыватель, обновись ты уже наконец!
+&lt;/audio&gt;
+
+&lt;hr&gt;
+
+Изображения:
+
+Взято из [[этого сообщества|https://vk.com/razvitie_metro_msk]]
+
+&lt;img src=&quot;images\Taingia_city_thin_reality.png&quot; width=&quot;50%&quot;&gt;
+
+&lt;hr&gt;
+
+Из семейного архива.
+
+&lt;img src=&quot;images\gg.png&quot; width=&quot;50%&quot;&gt;
+
+&lt;hr&gt;
+
+Автор: [[Kardalak|https://vk.com/kardalakpict]]. Нарисовано специально для этой игры.
+
+&lt;&lt;button &quot;Назад&quot; &quot;Главное меню&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Версия элиты" tags="" position="1800,325" size="100,100">Всё, что написано выше — лживая, поганая, вражеская, бездуховная, скверная, коммунистическая пропаганда Таингии. 99% — неудачники, так уж заложено природой. Скажите спасибо, что мы по доброте душевной обеспечиваем их всех необходимым, чтобы они не умерли от голода.
+
+Про касты вы просто врёте. Нагло врёте. У нас нет деления на касты. Просто в среднем примерно 1% населения имеет высокий уровень интеллекта, природную смекалку и способности, которые принесут на практике пользу всему обществу. Остальное тупое быдло, к сожалению, им навсегда и останется. Мы честно пытались, но безрезультатно. И поделом. Не нужно им образования сверх того, что одобрено международной комиссией. Они не в состоянии осознать даже такие простые вещи, как производная. У нас и так кончаются ресурсы.
+
+Необходимо немедленно захватить Таингию. Она не спрячется в своём поганом кармашке. Сбежали, как последние трусы, и все наши войска с собой захватили. Они должны ответить на смерти трёх миллионов солдат, которых они по нашим достоверным источникам перебили там у себя.
+
+Что вы привязались к полупроводникам? Научно доказано, что ничего лучше мы сделать не сможем — всё остальное либо не работает, либо работает гораздо хуже. Тоже мне, эксперты нашлись.
+
+Вся публикуемая информация о Таингии — чистейшая правда. Нет хуже места для человека во всей вселенной. Там любого загнобят, репрессируют и подведут под общую черту. Нет никакой индивидуальности. Делай то, что говорят. Не согласен — в застенок.
+
+[[Далее|Утро]]</tw-passagedata><tw-passagedata pid="12" name="Утро" tags="" position="1800,450" size="100,100">Примерно такие мысли возникали у вас, когда вы, проснувшись, смотрели и читали новые материалы от агентов, работающих во внешнем мире. Впрочем, ничего нового.
+
+После трёхсот лет жизни, последние двести пятьдесят из которых были проведены в Таингии, вы уже ничему не удивлялись. Предсказуемо аргументы и пропаганда внешнего мира становились всё более и более примитивными.
+
+В дверь постучали:
+
+— Это майор Бингаисов, разрешите войти! Срочно!
+
+Человек, рождённый двести лет назад от одного из солдат армии интервентов, взявший себе новую фамилию в честь столицы Таингии города Бингаиса, вошёл в квартиру.
+
+[[Далее|Рассказ Бингаисова]]</tw-passagedata><tw-passagedata pid="13" name="Рассказ Бингаисова" tags="" position="1800,575" size="100,100">— Товарищ майор, у нас опять убийство. Опять вживлённый чип обманут, и опять пятимерный временной след зашумлён. Убийцу отследить не удалось, поскольку всё произошло более суток назад и временной след уже растворился во Внешнем.
+
+— Опять… — Вы встали из-за стола. — Кто на этот раз?
+
+— Студент, проходил практику на генераторе реальности. На этот раз убийца, видимо, осмелел — генератор расположен на краю Бингаиса. Вся автоматика была обманута, а тело оттащили туда, куда не слишком часто ходит обслуживающий персонал. Вот, смотрите, — майор послал вам трёхмерную карту генератора. Вы мысленно её открыли и повернули, — это помещение 321 на третьем этаже. Генератор типовой, третьей очереди, — вы, кажется, на таком работали? — и убийца знал, что в этом помещении всего несколько датчиков, а заходят сюда лишь раз в неделю, чтобы проверить наличие запчастей для механизма перекрытия дублирующего контура охлаждения.
+
+Вы задумались. Уже как минимум десяток подобных случаев — кто-то пытается вывести из строя генератор реальности, и, если попадаются свидетели, их немедленно убивают, причём весьма, надо признать, искусно. Только есть один момент — без генератора реальности пространство вокруг него остаётся более-менее реальным, а значит, пригодным для проживания, ещё в течение полутора суток, и этого времени за всё время пребывания Таингии в карманном измерении всегда хватало, чтобы запустить рядом временный генератор и починить основной.
+
+— На этот раз дело серьёзное, поэтому к вам и обратились. До этого с делами разбирались местные комитеты, но такой случай в столице, пусть и на окраине… Генератор не работал в течение часа, это прецедент. Нам необходимо отследить, кто именно пытается совершать диверсии, кто убивает граждан Таингии. До этих случаев последнее умышленное убийство было десять лет назад!
+
+— Хорошо, включайте ГУП, полетим на место.
+
+[[Далее|Полёт до генератора]]</tw-passagedata><tw-passagedata pid="14" name="Полёт до генератора" tags="" position="1800,700" size="100,100">ГУП — гравитационное устройство перемещения — общее название для целого класса разнообразных устройств — от носимых на поясе индивидуальных, применяемых для срочных перемещений и монтажных работ, до больших «спрутов», опутывающих антеннами-генераторами груз, который подвешивается в искусственной невесомости и за счёт дополнительного направленного гравитационного поля перемещается в нужное место. Последние активно вытесняют уже ставшие традиционными для Таингии огромные дирижабли, длина которых достигает километра. Сейчас во всей Таингии осталось лишь два таких гиганта — один из них передан музею истории, а второй продолжает трудиться на благо страны.
+
+Те устройства, которые надеваете на себя вы и Бингаисов, имеют две антенны (одна — для основного поля, вторая — для поля, отвечающего за поворот человека вокруг его центра масс). В устройстве также находится батарея и сложная система датчиков, которая ни при каких обстоятельствах не даст пилоту покалечить или убить себя, летая при помощи ГУПа.
+
+Вы вышли на балкон и полетели на север. Там, на окраине, расположен тот самый генератор, внутри помещений которого и было совершено преступление. Под вами проносятся улицы, перемежаемые большими парками, дома на «ножках», которые позволяют свободно проходить под ними и прятаться от дождя, станции метро, которое фактически является частью остальной ж/д сети — сев на поезд в метро, вы можете доехать до моря или до гор, не выходя из него, а это, на минуточку, почти семьсот километров от города.
+
+Пролетая мимо термоядерной электростанции, вы увидели, что над прудом рядом с ней, от которого поднимался пар, кружит несколько планеров, а над ними, словно огромный кит, вальяжно пролетает один из последних огромных дирижаблей, который везёт каркас новой электростанции куда-то на юг, к горам.
+
+Итак, вы на месте. Генератор реальности, как обычно, пахнет смесью озона и ацетона — такой эффект даёт сильная концентрация реальности рядом с ним. Генератор расположен на берегу реки — над другим берегом висит туман. Наука Таингии пока не может дать однозначного объяснения тому, что при выключении генератора, пусть и кратковременном, вокруг него образуется туман.
+
+[[Далее|Постановка задачи]]
+
+&lt;img src=&quot;images\Taingia_city_thin_reality.png&quot; width=&quot;100%&quot;&gt;
+</tw-passagedata><tw-passagedata pid="15" name="Постановка задачи" tags="" position="1800,825" size="100,100">Вы осмотрели место преступления. Все места, на которые могли бы попасть частицы кожи преступника, его волосы и т.д., словом, предметы, по которым его можно было бы идентифицировать, выжжены кратковременной яркой вспышкой света и рентгеновского излучения — ДНК из оставшихся микроскопических кучек пепла не расшифруешь. 
+
+Сам труп студента уже увезли, но больше ничего не трогали — на полу остались лежать четырёхмерные чертежи. Вы подняли их и прочитали — это оказались чертежи предлагаемой новой формы основной излучающей антенны. На полях карандашом было написано: «Одобрено. Показать И.Ф.». То есть чертежи были одобрены главным по этому генератору и отправлены на рассмотрение в вышестоящую инстанцию.
+
+Студент внёс, скорее всего, действительно полезное рацпредложение. Будущий ценный кадр, высококвалифицированный специалист. Да даже будь он последним раздолбаем, нет ничего ценнее человеческой жизни. Надо найти ту сволочь, которая его убила. Непременно.
+
+После заведомо безуспешного осмотра с вами связался главный Совет Таингии.
+
+Вам поручено: внедриться во внешний мир (а именно — в самую сильную и развитую страну внешнего мира Вулечию — бывший научный и промышленный центр всего мира, с которым раньше спорить могла только Таингия), узнать, что конкретно делается для подготовки новой интервенции в Таингию (кто украл технологии телепортации между измерениями, есть ли шпионы, внедрённые в саму Таингию), вычислить убийцу или убийц, орудующих в Таингии.
+
+Второстепенная задача — при поддержке других агентов Таингии найти во внешнем мире коммунистические организации, если они существуют, узнать их цели и методы борьбы, если она происходит, и оказать им посильную помощь, не выдавая своего истинного гражданства.
+
+— Пожалуйста, поспешите. Во внешнем мире наверняка уже догадались, что, если просто выводить из строя генераторы реальности, Таингии сильно не навредишь. Они начнут действовать по-другому, и нам нужно их обогнать. Не обгоним — они победят. Нас двести миллионов, а их — десять миллиардов. И радиоактивная кратер-пустошь на месте Таингии всё больше и больше не даёт им покоя. Эх, мы ж буквально в последнюю секунду из-под их ракет улизнули вместе со всей страной, а им до сих пор хочется нас добить… В общем, удачи.
+
+[[Далее|Телепортация во внешний мир]]</tw-passagedata><tw-passagedata pid="16" name="Телепортация во внешний мир" tags="Музыка" position="1800,950" size="100,100">&lt;&lt;audio $Cur_audio volume $audio_vol fadeoverto 2 0.0&gt;&gt;&lt;&lt;script&gt;&gt;
+
+var delayInMilliseconds = 1000; //2 seconds
+
+setTimeout(function() {
+  Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;&quot;&gt;&gt;&lt;&lt;audio &quot;drive_bgm_4&quot; play volume 0.0&gt;&gt;&lt;&lt;set $Cur_audio = &quot;drive_bgm_4&quot;&gt;&gt;&lt;&lt;set $audio_vol = 0.15&gt;&gt;&lt;&lt;audio $Cur_audio volume 0.0 fadeoverto 3 0.15&gt;&gt;&#39;);
+}, delayInMilliseconds);
+
+&lt;&lt;/script&gt;&gt;Вы прилетели в специальное здание, в котором находилось единственное на всю Таингию устройство, способное телепортировать человека во внешний мир. Обратно можно было вернуться при помощи одноразового прибора, который вам выдали. Он замаскирован под пачку сигарет. Также вместо того ГУП, которое было на вас, вам выдали новую сверхкомпактную модель, замаскированную под ремень с большой пряжкой. Управлялась оно так же при помощи мыслей.
+
+Чип, вживлённый в голову каждому жителю Таингии, замаскировали под электроды протеза глаза. Всё равно практически нигде во внешнем мире нет достаточно совершенных устройств, чтобы просканировать голову и понять, что это всё обман.
+
+Итак, несколько термоядерных электростанций переключили исключительно на энергосеть телепортирующего устройства. За полчаса была заряжена огромная батарея-конденсатор, которая должна была обеспечить импульс энергии для перемещения человека сквозь Внешнее. Неживая материя не требовала такой энергии, поскольку её не надо было защищать от неблагоприятных условий, действующих на телепортируемый объект.
+
+Вы уж было задумались о том, что что-то затягивают с переходом с термоядерной энергии на энергию Внешнего, но вас окликнули. Вы встали на платформу и через долю секунды, почувствовав одновременные сильнейший холод и жар, оказались во внешнем мире.
+
+[[Далее|Про здоровье и время]]</tw-passagedata><tw-passagedata pid="17" name="Про здоровье и время" tags="" position="1800,1075" size="100,100">&lt;&lt;nobr&gt;&gt;
+
+&lt;&lt;audio $Cur_audio volume $audio_vol fadeoverto 2 0.0&gt;&gt;&lt;&lt;script&gt;&gt;
+
+var delayInMilliseconds = 2000; //2 seconds
+
+setTimeout(function() {
+  Wikifier.wikifyEval(&#39;&lt;&lt;audio &quot;:playing&quot; stop&gt;&gt;&lt;&lt;set $Cur_audio = &quot;&quot;&gt;&gt;&#39;);
+}, delayInMilliseconds);
+
+&lt;&lt;/script&gt;&gt;
+
+&lt;&lt;set $MaxHP = 100&gt;&gt; /*здоровье*/
+&lt;&lt;set $CurHP = 100&gt;&gt;
+&lt;&lt;set $MaxTireness = 100&gt;&gt; /*усталость*/
+&lt;&lt;set $Tireness = 100&gt;&gt;
+
+&lt;&lt;set $Cur_day = 1&gt;&gt; /*количество дней, прошедших с начала игры, и время (часы, минуты, секунды)*/
+&lt;&lt;set $Time = [7, 30, 0]&gt;&gt;
+
+&lt;&lt;endnobr&gt;&gt;У вашего персонажа есть показатели &lt;span style=&quot;color: #e00;&quot;&gt;здоровья&lt;/span&gt; и &lt;span style=&quot;color: #0e0;&quot;&gt;усталости&lt;/span&gt;. Усталость накапливается, если долго заниматься умственным или физическим трудом и/или не спать более полутора суток подряд. Чем больше накопилось усталости, тем хуже персонаж будет справляться с поставленными задачами — его навыки будут уменьшаться, пока он не отдохнёт или поспит. Уровень усталости можно посмотреть, нажав на кнопку «Навыки и инвентарь» в боковом меню.
+
+У вас есть &lt;span style=&quot;color: #ee0;&quot;&gt;три дня&lt;/span&gt; на то, чтобы вычислить главного предателя — того, кто продал внешнему миру сведения, связанные с телепортацией между измерениями.
+</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
 	if(document.documentElement.getAttribute("data-init")==="loading"){!function(window,document,jQuery,undefined){"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=undefined;try{for(var o,s=e[Symbol.iterator]();!(n=(o=s.next()).done)&&(r.push(o.value),!t||r.length!==t);n=!0);}catch(e){a=!0,i=e}finally{try{!n&&s.return&&s.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},errorPrologRegExp=/^(?:(?:uncaught\s+(?:exception:\s+)?)?\w*(?:error|exception|_err):\s+)+/i,Alert=function(){function e(e,t,r,n){var a="fatal"===e,i="Apologies! "+(a?"A fatal":"An")+" error has occurred.";i+=a?" Aborting.":" You may be able to continue, but some parts may not work properly.",null==t&&null==r||(i+="\n\nError",null!=t&&(i+=" ["+t+"]"),i+=null!=r?": "+r.replace(errorPrologRegExp,"")+".":": unknown error."),"object"===(void 0===n?"undefined":_typeof(n))&&null!==n&&n.stack&&(i+="\n\nStack Trace:\n"+n.stack),window.alert(i)}function t(t,r,n){e(null,t,r,n)}function r(t,r,n){e("fatal",t,r,n)}return function(e){window.onerror=function(n,a,i,o,s){"complete"===document.readyState?t(null,n,s):(r(null,n,s),window.onerror=e,"function"==typeof window.onerror&&window.onerror.apply(this,arguments))}}(window.onerror),Object.freeze(Object.defineProperties({},{error:{value:t},fatal:{value:r}}))}(),Patterns=function(){var e=function(){var e=new Map([[" ","\\u0020"],["\f","\\f"],["\n","\\n"],["\r","\\r"],["\t","\\t"],["\v","\\v"],[" ","\\u00a0"],[" ","\\u1680"],["᠎","\\u180e"],[" ","\\u2000"],[" ","\\u2001"],[" ","\\u2002"],[" ","\\u2003"],[" ","\\u2004"],[" ","\\u2005"],[" ","\\u2006"],[" ","\\u2007"],[" ","\\u2008"],[" ","\\u2009"],[" ","\\u200a"],["\u2028","\\u2028"],["\u2029","\\u2029"],[" ","\\u202f"],[" ","\\u205f"],["　","\\u3000"],["\ufeff","\\ufeff"]]),t=/^\s$/,r="";return e.forEach(function(e,n){t.test(n)||(r+=e)}),r?"[\\s"+r+"]":"\\s"}(),t="[\\u0020\\f\\t\\v\\u00a0\\u1680\\u180e\\u2000-\\u200a\\u202f\\u205f\\u3000\\ufeff]",r="\\s"===e?"\\S":e.replace(/^\[/,"[^"),n="[0-9A-Z_a-z\\-\\u00c0-\\u00d6\\u00d8-\\u00f6\\u00f8-\\u00ff\\u0150\\u0170\\u0151\\u0171]",a=n.replace("\\-",""),i=function(){var e="(?:[\\x2D.0-9A-Z_a-z\\xB7\\xC0-\\xD6\\xD8-\\xF6\\xF8-\\u037D\\u037F-\\u1FFF\\u200C\\u200D\\u203F\\u2040\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD]|[\\uD800-\\uDB7F][\\uDC00-\\uDFFF])";return"[A-Za-z](?:"+e+"*-"+e+"*|[0-9A-Za-z]*)"}(),o=function(){return"("+n+"+)\\(([^\\)\\|\\n]+)\\):|"+t+"*("+n+"+)"+t+"*:([^;\\|\\n]+);|"+t+"*((?:[#.]"+n+"+"+t+"*)+);"}();return Object.freeze({space:e,spaceNoTerminator:t,lineTerminator:"[\\n\\r\\u2028\\u2029]",notSpace:r,anyChar:"(?:.|[\\n\\r\\u2028\\u2029])",anyLetter:n,anyLetterStrict:a,identifierFirstChar:"[$A-Z_a-z]",identifierNextChar:"[$0-9A-Z_a-z]",identifier:"[$A-Z_a-z][$0-9A-Z_a-z]*",variableSigil:"[$_]",variable:"[$_][$A-Z_a-z][$0-9A-Z_a-z]*",macroName:"[A-Za-z][\\w-]*|[=-]",templateName:"[A-Za-z][\\w-]*",htmlTagName:i,cssIdOrClassSigil:"[#.]",cssImage:"\\[[<>]?[Ii][Mm][Gg]\\[(?:\\s|\\S)*?\\]\\]+",inlineCss:o,url:"(?:file|https?|mailto|ftp|javascript|irc|news|data):[^\\s'\"]+"})}();!function(){function e(e,t){var r=Number.parseInt(e,10)||0;if(r<1)return"";var n=void 0===t?"":String(t);for(""===n&&(n=" ");n.length<r;){var a=n.length,i=r-a;n+=a>i?n.slice(0,i):n}return n.length>r&&(n=n.slice(0,r)),n}var t=function(){function e(e,n){var a=String(e);if(!a)return a;switch(n){case"start":return t.test(a)?a.replace(t,""):a;case"end":return r.test(a)?a.replace(r,""):a;default:throw new Error('_trimString called with incorrect where parameter value: "'+n+'"')}}var t=new RegExp("^"+Patterns.space+Patterns.space+"*"),r=new RegExp(""+Patterns.space+Patterns.space+"*$");return e}();Array.prototype.flat||Object.defineProperty(Array.prototype,"flat",{configurable:!0,writable:!0,value:function(){function e(){if(null==this)throw new TypeError("Array.prototype.flat called on null or undefined");var t=0===arguments.length?1:Number(arguments[0])||0;return t<1?Array.prototype.slice.call(this):Array.prototype.reduce.call(this,function(r,n){return n instanceof Array?r.push.apply(r,_toConsumableArray(e.call(n,t-1))):r.push(n),r},[])}return e}()}),Array.prototype.flatMap||Object.defineProperty(Array.prototype,"flatMap",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatMap called on null or undefined");return Array.prototype.map.apply(this,arguments).flat()}}),Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includes called on null or undefined");if(0===arguments.length)return!1;var e=this.length>>>0;if(0===e)return!1;var t=arguments[0],r=Number(arguments[1])||0;for(r<0&&(r=Math.max(0,e+r));r<e;++r){var n=this[r];if(n===t||n!==n&&t!==t)return!0}return!1}}),Object.entries||Object.defineProperty(Object,"entries",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.entries object parameter must be an object");return Object.keys(e).map(function(t){return[t,e[t]]})}}),Object.fromEntries||Object.defineProperty(Object,"fromEntries",{configurable:!0,writable:!0,value:function(e){return Array.from(e).reduce(function(e,t){if(Object(t)!==t)throw new TypeError("Object.fromEntries iterable parameter must yield objects");return t[0]in e?Object.defineProperty(e,t[0],{configurable:!0,enumerable:!0,writable:!0,value:t[1]}):e[t[0]]=t[1],e},{})}}),Object.getOwnPropertyDescriptors||Object.defineProperty(Object,"getOwnPropertyDescriptors",{configurable:!0,writable:!0,value:function(e){if(null==e)throw new TypeError("Object.getOwnPropertyDescriptors object parameter is null or undefined");var t=Object(e);return Reflect.ownKeys(t).reduce(function(e,r){var n=Object.getOwnPropertyDescriptor(t,r);return void 0!==n&&(r in e?Object.defineProperty(e,r,{configurable:!0,enumerable:!0,writable:!0,value:n}):e[r]=n),e},{})}}),Object.values||Object.defineProperty(Object,"values",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)throw new TypeError("Object.values object parameter must be an object");return Object.keys(e).map(function(t){return e[t]})}}),String.prototype.padStart||Object.defineProperty(String.prototype,"padStart",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padStart called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:e(i-a,r)+n}}),String.prototype.padEnd||Object.defineProperty(String.prototype,"padEnd",{configurable:!0,writable:!0,value:function(t,r){if(null==this)throw new TypeError("String.prototype.padEnd called on null or undefined");var n=String(this),a=n.length,i=Number.parseInt(t,10);return i<=a?n:n+e(i-a,r)}}),String.prototype.trimStart||Object.defineProperty(String.prototype,"trimStart",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimStart called on null or undefined");return t(this,"start")}}),String.prototype.trimLeft||Object.defineProperty(String.prototype,"trimLeft",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimLeft called on null or undefined");return t(this,"start")}}),String.prototype.trimEnd||Object.defineProperty(String.prototype,"trimEnd",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimEnd called on null or undefined");return t(this,"end")}}),String.prototype.trimRight||Object.defineProperty(String.prototype,"trimRight",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.trimRight called on null or undefined");return t(this,"end")}})}(),function(){function _random(){var e=void 0,t=void 0;switch(arguments.length){case 0:throw new Error("_random called with insufficient parameters");case 1:e=0,t=arguments[0];break;default:e=arguments[0],t=arguments[1]}if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.floor(_nativeMathRandom()*(t-e+1))+e}function _randomIndex(e,t){var r=void 0,n=void 0;switch(t.length){case 1:r=0,n=e-1;break;case 2:r=0,n=Math.trunc(t[1]);break;default:r=Math.trunc(t[1]),n=Math.trunc(t[2])}return Number.isNaN(r)?r=0:!Number.isFinite(r)||r>=e?r=e-1:r<0&&(r=e+r)<0&&(r=0),Number.isNaN(n)?n=0:!Number.isFinite(n)||n>=e?n=e-1:n<0&&(n=e+n)<0&&(n=e-1),_random(r,n)}function _getCodePointStartAndEnd(e,t){var r=e.charCodeAt(t);if(Number.isNaN(r))return{char:"",start:-1,end:-1};if(r<55296||r>57343)return{char:e.charAt(t),start:t,end:t};if(r>=55296&&r<=56319){var n=t+1;if(n>=e.length)throw new Error("high surrogate without trailing low surrogate");var a=e.charCodeAt(n);if(a<56320||a>57343)throw new Error("high surrogate without trailing low surrogate");return{char:e.charAt(t)+e.charAt(n),start:t,end:n}}if(0===t)throw new Error("low surrogate without leading high surrogate");var i=t-1,o=e.charCodeAt(i);if(o<55296||o>56319)throw new Error("low surrogate without leading high surrogate");return{char:e.charAt(i)+e.charAt(t),start:i,end:t}}var _nativeMathRandom=Math.random;Object.defineProperty(Array,"random",{configurable:!0,writable:!0,value:function(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e||!Object.prototype.hasOwnProperty.call(e,"length"))throw new TypeError("Array.random array parameter must be an array or array-lke object");var t=e.length>>>0;if(0!==t){return e[0===arguments.length?_random(0,t-1):_randomIndex(t,Array.prototype.slice.call(arguments,1))]}}}),Object.defineProperty(Array.prototype,"concatUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.concatUnique called on null or undefined");var e=Array.from(this);if(0===arguments.length)return e;var t=Array.prototype.reduce.call(arguments,function(e,t){return e.concat(t)},[]),r=t.length;if(0===r)return e;for(var n=Array.prototype.indexOf,a=Array.prototype.push,i=0;i<r;++i){var o=t[i];-1===n.call(e,o)&&a.call(e,o)}return e}}),Object.defineProperty(Array.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.count called on null or undefined");for(var e=Array.prototype.indexOf,t=arguments[0],r=Number(arguments[1])||0,n=0;-1!==(r=e.call(this,t,r));)++n,++r;return n}}),Object.defineProperty(Array.prototype,"delete",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.delete called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.concat.apply([],arguments),r=t.length,n=[],a=0;a<e;++a)for(var i=this[a],o=0;o<r;++o){var s=t[o];if(i===s||i!==i&&s!==s){n.push(a);break}}for(var u=[],l=0,c=n.length;l<c;++l)u[l]=this[n[l]];for(var d=Array.prototype.splice,f=n.length-1;f>=0;--f)d.call(this,n[f],1);return u}}),Object.defineProperty(Array.prototype,"deleteAt",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.deleteAt called on null or undefined");if(0===arguments.length)return[];var e=this.length>>>0;if(0===e)return[];for(var t=Array.prototype.splice,r=[].concat(_toConsumableArray(new Set(Array.prototype.concat.apply([],arguments).map(function(t){return t<0?Math.max(0,e+t):t})).values())),n=[].concat(_toConsumableArray(r)).sort(function(e,t){return t-e}),a=[],i=0,o=r.length;i<o;++i)a[i]=this[r[i]];for(var s=0,u=n.length;s<u;++s)t.call(this,n[s],1);return a}}),Object.defineProperty(Array.prototype,"deleteWith",{configurable:!0,writable:!0,value:function(e,t){if(null==this)throw new TypeError("Array.prototype.deleteWith called on null or undefined");if("function"!=typeof e)throw new Error("Array.prototype.deleteWith predicate parameter must be a function");var r=this.length>>>0;if(0===r)return[];for(var n=Array.prototype.splice,a=[],i=[],o=0;o<r;++o)e.call(t,this[o],o,this)&&(i.push(this[o]),a.push(o));for(var s=a.length-1;s>=0;--s)n.call(this,a[s],1);return i}}),Object.defineProperty(Array.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.first called on null or undefined");if(0!=this.length>>>0)return this[0]}}),Object.defineProperty(Array.prototype,"includesAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAll called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAll.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(!Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!1;return!0}}),Object.defineProperty(Array.prototype,"includesAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.includesAny called on null or undefined");if(1===arguments.length)return Array.isArray(arguments[0])?Array.prototype.includesAny.apply(this,arguments[0]):Array.prototype.includes.apply(this,arguments);for(var e=0,t=arguments.length;e<t;++e)if(Array.prototype.some.call(this,function(e){return e===this.val||e!==e&&this.val!==this.val},{val:arguments[e]}))return!0;return!1}}),Object.defineProperty(Array.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.last called on null or undefined");var e=this.length>>>0;if(0!==e)return this[e-1]}}),Object.defineProperty(Array.prototype,"pluck",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pluck called on null or undefined");var e=this.length>>>0;if(0!==e){var t=0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)));return Array.prototype.splice.call(this,t,1)[0]}}}),Object.defineProperty(Array.prototype,"pluckMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.pluckMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.pluckMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=Array.prototype.splice,a=[],i=t-1;do{a.push(n.call(this,_random(0,i--),1)[0])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"pushUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.pushUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.push,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Array.prototype,"random",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.random called on null or undefined");var e=this.length>>>0;if(0!==e){return this[0===arguments.length?_random(0,e-1):_randomIndex(e,[].concat(Array.prototype.slice.call(arguments)))]}}}),Object.defineProperty(Array.prototype,"randomMany",{configurable:!0,writable:!0,value:function(e){if(null==this)throw new TypeError("Array.prototype.randomMany called on null or undefined");var t=this.length>>>0;if(0===t)return[];var r=Math.trunc(e);if(!Number.isInteger(r))throw new Error("Array.prototype.randomMany want parameter must be an integer");if(r<1)return[];r>t&&(r=t);var n=new Map,a=[],i=t-1;do{var o=void 0;do{o=_random(0,i)}while(n.has(o));n.set(o,!0),a.push(this[o])}while(a.length<r);return a}}),Object.defineProperty(Array.prototype,"shuffle",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.shuffle called on null or undefined");var e=this.length>>>0;if(0===e)return this;for(var t=e-1;t>0;--t){var r=Math.floor(_nativeMathRandom()*(t+1));if(t!==r){var n=this[t];this[t]=this[r],this[r]=n}}return this}}),Object.defineProperty(Array.prototype,"unshiftUnique",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.unshiftUnique called on null or undefined");var e=arguments.length;if(0===e)return this.length>>>0;for(var t=Array.prototype.indexOf,r=Array.prototype.unshift,n=0;n<e;++n){var a=arguments[n];-1===t.call(this,a)&&r.call(this,a)}return this.length>>>0}}),Object.defineProperty(Function.prototype,"partial",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Function.prototype.partial called on null or undefined");var e=Array.prototype.slice,t=this,r=e.call(arguments,0);return function(){for(var n=[],a=0,i=0;i<r.length;++i)n.push(r[i]===undefined?arguments[a++]:r[i]);return t.apply(this,n.concat(e.call(arguments,a)))}}}),Object.defineProperty(Math,"clamp",{configurable:!0,writable:!0,value:function(e,t,r){var n=Number(e);return Number.isNaN(n)?NaN:n.clamp(t,r)}}),Object.defineProperty(Math,"easeInOut",{configurable:!0,writable:!0,value:function(e){return 1-(Math.cos(Number(e)*Math.PI)+1)/2}}),Object.defineProperty(Number.prototype,"clamp",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Number.prototype.clamp called on null or undefined");if(2!==arguments.length)throw new Error("Number.prototype.clamp called with an incorrect number of parameters");var e=Number(arguments[0]),t=Number(arguments[1]);if(e>t){var r=[t,e];e=r[0],t=r[1]}return Math.min(Math.max(this,e),t)}}),RegExp.escape||function(){var e=/[\\^$*+?.()|[\]{}]/g,t=new RegExp(e.source);Object.defineProperty(RegExp,"escape",{configurable:!0,writable:!0,value:function(r){var n=String(r);return n&&t.test(n)?n.replace(e,"\\$&"):n}})}(),function(){var e=/{(\d+)(?:,([+-]?\d+))?}/g,t=new RegExp(e.source);Object.defineProperty(String,"format",{configurable:!0,writable:!0,value:function(r){function n(e,t,r){if(!t)return e;var n=Math.abs(t)-e.length;if(n<1)return e;var a=String(r).repeat(n);return t<0?e+a:a+e}if(arguments.length<2)return 0===arguments.length?"":r;var a=2===arguments.length&&Array.isArray(arguments[1])?[].concat(_toConsumableArray(arguments[1])):Array.prototype.slice.call(arguments,1);return 0===a.length?r:t.test(r)?(e.lastIndex=0,r.replace(e,function(e,t,r){var i=a[t];if(null==i)return"";for(;"function"==typeof i;)i=i();switch(void 0===i?"undefined":_typeof(i)){case"string":break;case"object":i=JSON.stringify(i);break;default:i=String(i)}return n(i,r?Number.parseInt(r,10):0," ")})):r}})}(),Object.defineProperty(String.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.contains called on null or undefined");return-1!==String.prototype.indexOf.apply(this,arguments)}}),Object.defineProperty(String.prototype,"count",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.count called on null or undefined");var e=String(arguments[0]||"");if(""===e)return 0;for(var t=String.prototype.indexOf,r=e.length,n=Number(arguments[1])||0,a=0;-1!==(n=t.call(this,e,n));)++a,n+=r;return a}}),Object.defineProperty(String.prototype,"first",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.first called on null or undefined");return _getCodePointStartAndEnd(String(this),0).char}}),Object.defineProperty(String.prototype,"last",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.last called on null or undefined");var e=String(this);return _getCodePointStartAndEnd(e,e.length-1).char}}),Object.defineProperty(String.prototype,"splice",{configurable:!0,writable:!0,value:function(e,t,r){if(null==this)throw new TypeError("String.prototype.splice called on null or undefined");var n=this.length>>>0;if(0===n)return"";var a=Number(e);Number.isSafeInteger(a)?a<0&&(a+=n)<0&&(a=0):a=0,a>n&&(a=n);var i=Number(t);(!Number.isSafeInteger(i)||i<0)&&(i=0);var o=this.slice(0,a);return void 0!==r&&(o+=r),a+i<n&&(o+=this.slice(a+i)),o}}),Object.defineProperty(String.prototype,"splitOrEmpty",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.splitOrEmpty called on null or undefined");return""===String(this)?[]:String.prototype.split.apply(this,arguments)}}),Object.defineProperty(String.prototype,"toLocaleUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toLocaleUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toLocaleUpperCase()+e.slice(n+1)}}),Object.defineProperty(String.prototype,"toUpperFirst",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.toUpperFirst called on null or undefined");var e=String(this),t=_getCodePointStartAndEnd(e,0),r=t.char,n=t.end;return-1===n?"":r.toUpperCase()+e.slice(n+1)}}),Object.defineProperty(Date.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:date)",this.toISOString()]}}),Object.defineProperty(Function.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)","("+this.toString()+")"]}}),Object.defineProperty(Map.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:map)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(RegExp.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:eval)",this.toString()]}}),Object.defineProperty(Set.prototype,"toJSON",{configurable:!0,writable:!0,value:function(){return["(revive:set)",[].concat(_toConsumableArray(this))]}}),Object.defineProperty(JSON,"reviveWrapper",{configurable:!0,writable:!0,value:function(e,t){if("string"!=typeof e)throw new TypeError("JSON.reviveWrapper code parameter must be a string");return["(revive:eval)",[e,t]]}}),Object.defineProperty(JSON,"_real_stringify",{value:JSON.stringify}),Object.defineProperty(JSON,"stringify",{configurable:!0,writable:!0,value:function(e,t,r){return JSON._real_stringify(e,function(e,r){var n=r;if("function"==typeof t)try{n=t(e,n)}catch(e){}return void 0===n&&(n=["(revive:eval)","undefined"]),n},r)}}),Object.defineProperty(JSON,"_real_parse",{value:JSON.parse}),Object.defineProperty(JSON,"parse",{configurable:!0,writable:!0,value:function value(text,reviver){return JSON._real_parse(text,function(key,val){var value=val;if(Array.isArray(value)&&2===value.length)switch(value[0]){case"(revive:set)":value=new Set(value[1]);break;case"(revive:map)":value=new Map(value[1]);break;case"(revive:date)":value=new Date(value[1]);break;case"(revive:eval)":try{if(Array.isArray(value[1])){var $ReviveData$=value[1][1];value=eval(value[1][0])}else value=eval(value[1])}catch(e){}}else if("string"==typeof value&&"@@revive@@"===value.slice(0,10))try{value=eval(value.slice(10))}catch(e){}if("function"==typeof reviver)try{value=reviver(key,value)}catch(e){}return value})}}),Object.defineProperty(Array.prototype,"contains",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.contains called on null or undefined");return Array.prototype.includes.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAll",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAll called on null or undefined");return Array.prototype.includesAll.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"containsAny",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.containsAny called on null or undefined");return Array.prototype.includesAny.apply(this,arguments)}}),Object.defineProperty(Array.prototype,"flatten",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("Array.prototype.flatten called on null or undefined");return Array.prototype.flat.call(this,1/0)}}),Object.defineProperty(String.prototype,"readBracketedList",{configurable:!0,writable:!0,value:function(){if(null==this)throw new TypeError("String.prototype.readBracketedList called on null or undefined");for(var e=new RegExp("(?:\\[\\[((?:\\s|\\S)*?)\\]\\])|([^\"'\\s]\\S*)","gm"),t=[],r=void 0;null!==(r=e.exec(this));)r[1]?t.push(r[1]):r[2]&&t.push(r[2]);return t}})}();var Browser=function(){var e=navigator.userAgent.toLowerCase(),t=e.includes("windows phone"),r=Object.freeze({Android:!t&&e.includes("android"),BlackBerry:/blackberry|bb10/.test(e),iOS:!t&&/ip(?:hone|ad|od)/.test(e),Opera:!t&&("object"===_typeof(window.operamini)||e.includes("opera mini")),Windows:t||/iemobile|wpdesktop/.test(e),any:function(){return r.Android||r.BlackBerry||r.iOS||r.Opera||r.Windows}}),n=!r.Windows&&!/khtml|trident|edge/.test(e)&&e.includes("gecko"),a=!e.includes("opera")&&/msie|trident/.test(e),i=a?function(){var t=/(?:msie\s+|rv:)(\d+\.\d)/.exec(e);return t?Number(t[1]):0}():null,o=e.includes("opera")||e.includes(" opr/"),s=o?function(){var t=new RegExp((/khtml|chrome/.test(e)?"opr":"version")+"\\/(\\d+\\.\\d+)"),r=t.exec(e);return r?Number(r[1]):0}():null,u=e.includes("vivaldi");return Object.freeze({userAgent:e,isMobile:r,isGecko:n,isIE:a,ieVersion:i,isOpera:o,operaVersion:s,isVivaldi:u})}(),Has=function(){var e=function(){try{return"function"==typeof document.createElement("audio").canPlayType}catch(e){}return!1}(),t=function(){try{return"Blob"in window&&"File"in window&&"FileList"in window&&"FileReader"in window&&(!Browser.isOpera||Browser.operaVersion>=15)}catch(e){}return!1}(),r=function(){try{return"geolocation"in navigator&&"function"==typeof navigator.geolocation.getCurrentPosition&&"function"==typeof navigator.geolocation.watchPosition}catch(e){}return!1}(),n=function(){try{return"MutationObserver"in window&&"function"==typeof window.MutationObserver}catch(e){}return!1}(),a=function(){try{return"performance"in window&&"function"==typeof window.performance.now}catch(e){}return!1}(),i=function(){try{return"ontouchstart"in window||!!window.DocumentTouch&&document instanceof window.DocumentTouch||!!navigator.maxTouchPoints||!!navigator.msMaxTouchPoints}catch(e){}return!1}(),o=function(){try{for(var e=new Map([["transition","transitionend"],["MSTransition","msTransitionEnd"],["WebkitTransition","webkitTransitionEnd"],["MozTransition","transitionend"]]),t=[].concat(_toConsumableArray(e.keys())),r=document.createElement("div"),n=0;n<t.length;++n)if(r.style[t[n]]!==undefined)return e.get(t[n])}catch(e){}return!1}();return Object.freeze({audio:e,fileAPI:t,geolocation:r,mutationObserver:n,performance:a,touch:i,transitionEndEvent:o})}(),Visibility=function(){function e(){return a}function t(){return a&&document[a.stateProperty]||"visible"}function r(){return Boolean(a)}function n(){return Boolean(a&&document[a.hiddenProperty])}var a=function(){try{return Object.freeze([{hiddenProperty:"hidden",stateProperty:"visibilityState",changeEvent:"visibilitychange"},{hiddenProperty:"webkitHidden",stateProperty:"webkitVisibilityState",changeEvent:"webkitvisibilitychange"},{hiddenProperty:"mozHidden",stateProperty:"mozVisibilityState",changeEvent:"mozvisibilitychange"},{hiddenProperty:"msHidden",stateProperty:"msVisibilityState",changeEvent:"msvisibilitychange"}].find(function(e){return e.hiddenProperty in document}))}catch(e){}return undefined}();return Object.freeze(Object.defineProperties({},{vendor:{get:e},state:{get:t},isEnabled:{value:r},isHidden:{value:n},hiddenProperty:{value:a&&a.hiddenProperty},stateProperty:{value:a&&a.stateProperty},changeEvent:{value:a&&a.changeEvent}}))}(),Fullscreen=function(){function e(e){var t=e||document.documentElement;return t===document.documentElement&&("msRequestFullscreen"===f.requestFn||Browser.isOpera&&Browser.operaVersion<15)&&(t=document.body),t}function t(){return f}function r(){return(f||null)&&document[f.element]}function n(){return Boolean(f&&document[f.isEnabled])}function a(){return Boolean(f&&document[f.element])}function i(t,r){var n=this;if(!f)return Promise.reject(new Error("fullscreen not supported"));var i=e(r);if("function"!=typeof i[f.requestFn])return Promise.reject(new Error("fullscreen not supported"));if(a())return Promise.resolve();if(p())return i[f.requestFn](t);var o=".Fullscreen_requestFullscreen";return new Promise(function(e,r){jQuery(i).off(o).one(""+f.errorEvent+o+" "+f.changeEvent+o,function(t){jQuery(n).off(o),t.type===f.errorEvent?r(new Error("unknown fullscreen request error")):e()}),i[f.requestFn](t)})}function o(){var e=this;if(!f||"function"!=typeof document[f.exitFn])return Promise.reject(new TypeError("fullscreen not supported"));if(!a())return Promise.reject(new TypeError("fullscreen mode not active"));if(p())return document[f.exitFn]();var t=".Fullscreen_exitFullscreen";return new Promise(function(r,n){jQuery(document).off(t).one(""+f.errorEvent+t+" "+f.changeEvent+t,function(a){jQuery(e).off(t),a.type===f.errorEvent?n(new Error("unknown fullscreen exit error")):r()}),document[f.exitFn]()})}function s(e,t){return a()?o():i(e,t)}function u(t,r){if(f){var n=e(r);$(n).on(f.changeEvent,t)}}function l(t,r){if(f){var n=e(r);t?$(n).off(f.changeEvent,t):$(n).off(f.changeEvent)}}function c(t,r){if(f){var n=e(r);$(n).on(f.errorEvent,t)}}function d(t,r){if(f){var n=e(r);t?$(n).off(f.errorEvent,t):$(n).off(f.errorEvent)}}var f=function(){try{return Object.freeze([{isEnabled:"fullscreenEnabled",element:"fullscreenElement",requestFn:"requestFullscreen",exitFn:"exitFullscreen",changeEvent:"fullscreenchange",errorEvent:"fullscreenerror"},{isEnabled:"webkitFullscreenEnabled",element:"webkitFullscreenElement",requestFn:"webkitRequestFullscreen",exitFn:"webkitExitFullscreen",changeEvent:"webkitfullscreenchange",errorEvent:"webkitfullscreenerror"},{isEnabled:"mozFullScreenEnabled",element:"mozFullScreenElement",requestFn:"mozRequestFullScreen",exitFn:"mozCancelFullScreen",changeEvent:"mozfullscreenchange",errorEvent:"mozfullscreenerror"},{isEnabled:"msFullscreenEnabled",element:"msFullscreenElement",requestFn:"msRequestFullscreen",exitFn:"msExitFullscreen",changeEvent:"MSFullscreenChange",errorEvent:"MSFullscreenError"}].find(function(e){return e.isEnabled in document}))}catch(e){}return undefined}(),p=function(){function e(){if(null!==t)return t;if(t=!1,f)try{var e=document.exitFullscreen();e.catch(function(){}),t=e instanceof Promise}catch(e){}return t}var t=null;return e}();return Object.freeze(Object.defineProperties({},{vendor:{get:t},element:{get:r},isEnabled:{value:n},isFullscreen:{value:a},request:{value:i},exit:{value:o},toggle:{value:s},onChange:{value:u},offChange:{value:l},onError:{value:c},offError:{value:d}}))}(),_ref3=function(){function e(e){for(var t=e.cloneNode(!0),r=document.createDocumentFragment(),n=void 0;null!==(n=t.firstChild);){if(n.nodeType===Node.ELEMENT_NODE)switch(n.nodeName.toUpperCase()){case"BR":case"DIV":case"P":r.appendChild(document.createTextNode(" "))}r.appendChild(n)}return r.textContent}function t(e){if("object"!==(void 0===e?"undefined":_typeof(e))||null===e)return e;if(e instanceof String)return String(e);if(e instanceof Number)return Number(e);if(e instanceof Boolean)return Boolean(e)
